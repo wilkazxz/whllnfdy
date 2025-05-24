@@ -1,130 +1,174 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PPDB Al-Baqiyatul Hidayah</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f4f7f6;
-    margin: 0; padding: 20px;
-  }
-  .box {
-    max-width: 400px;
-    margin: 0 auto;
-    background: #fff;
-    border: 1.5px solid #0f766e;
-    border-radius: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  h2 {
-    margin: 0 0 20px;
-    color: #0f766e;
-    font-weight: 700;
-    text-align: center;
-  }
-  label {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-    color: #333;
-  }
-  input, select, textarea {
-    width: 100%;
-    padding: 8px 10px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 14px;
-    resize: vertical;
-  }
-  button {
-    margin-top: 25px;
-    width: 100%;
-    background: #0f766e;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0b594c;
-  }
-  .footer {
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    color: #555;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilkazxq - Developer & Creator</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            margin: 1rem auto;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #64748b;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="box">
-  <h2>PPDB Al-Baqiyatul Hidayah</h2>
-  <form onsubmit="return sendWA(event)">
-    <label for="nama">Nama Lengkap *</label>
-    <input type="text" id="nama" required />
-
-    <label for="tgl">Tanggal Lahir *</label>
-    <input type="date" id="tgl" required />
-
-    <label for="gender">Jenis Kelamin *</label>
-    <select id="gender" required>
-      <option value="">-- Pilih --</option>
-      <option value="Laki-laki">Laki-laki</option>
-      <option value="Perempuan">Perempuan</option>
-    </select>
-
-    <label for="alamat">Alamat Lengkap *</label>
-    <textarea id="alamat" rows="3" required></textarea>
-
-    <label for="hp">No. HP / WhatsApp *</label>
-    <input type="tel" id="hp" required />
-
-    <label for="sekolah">Asal Sekolah *</label>
-    <input type="text" id="sekolah" required />
-
-    <label for="catatan">Catatan Tambahan</label>
-    <textarea id="catatan" rows="2"></textarea>
-
-    <button type="submit">Kirim Pendaftaran</button>
-  </form>
-  <div class="footer">Gratis Pendaftaran dan Pemasukan Santri Baru</div>
-</div>
-
-<script>
-  function sendWA(e) {
-    e.preventDefault();
-    const nama = document.getElementById('nama').value.trim();
-    const tgl = document.getElementById('tgl').value;
-    const gender = document.getElementById('gender').value;
-    const alamat = document.getElementById('alamat').value.trim();
-    const hp = document.getElementById('hp').value.trim();
-    const sekolah = document.getElementById('sekolah').value.trim();
-    const catatan = document.getElementById('catatan').value.trim();
-
-    let pesan = `*Pendaftaran Santri Baru - Al-Baqiyatul Hidayah*%0A`;
-    pesan += `Nama: ${nama}%0A`;
-    pesan += `Tanggal Lahir: ${tgl}%0A`;
-    pesan += `Jenis Kelamin: ${gender}%0A`;
-    pesan += `Alamat: ${alamat}%0A`;
-    pesan += `No HP/WA: ${hp}%0A`;
-    pesan += `Asal Sekolah: ${sekolah}%0A`;
-    pesan += `Catatan: ${catatan ? catatan : '-'}`;
-
-    const waNumber = '6282293786539';
-    const url = `https://wa.me/${waNumber}?text=${pesan}`;
-    window.open(url, '_blank');
-    return false;
-  }
-</script>
-
+    <div class="container">
+        <header>
+            <!-- Ganti dengan foto Anda -->
+            <img src="profile.jpg" alt="Wilkazxq" class="profile-img">
+            <h1>Wilkazxq</h1>
+            <p>Developer & Creator</p>
+        </header>
+        
+        <div class="contact-info">
+            <p><strong>Telepon:</strong> +62 813-7165-2027</p>
+            <p><strong>Email:</strong> wilkadev@gmail.com</p>
+            <p><strong>Website:</strong> wilkazxq.dev</p>
+            <a href="https://wa.me/6281371652027" class="whatsapp-btn">Gabung WhatsApp</a>
+        </div>
+        
+        <div class="section">
+            <h2>Profesi Saya</h2>
+            <ul>
+                <li>Android App Developer</li>
+                <li>Web Designer</li>
+                <li>Digital Produk Creator</li>
+                <li>UI/UX Enthusiast</li>
+                <li>Teknisi HP & Jaringan</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Keahlian</h2>
+            <div class="skills">
+                <span class="skill">Android Development</span>
+                <span class="skill">Web Design</span>
+                <span class="skill">UI/UX</span>
+                <span class="skill">Kotlin</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">HTML/CSS</span>
+                <span class="skill">Network Troubleshooting</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Proyek Terbaru</h2>
+            <p>Beberapa proyek yang sedang saya kerjakan:</p>
+            <!-- Tambahkan proyek Anda di sini -->
+            <p>Coming soon...</p>
+        </div>
+        
+        <div class="section">
+            <h2>Musik Saya</h2>
+            <!-- Tambahkan embed musik atau player -->
+            <p>0:07 / 0:17</p>
+            <p>[Player musik akan ditampilkan di sini]</p>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Wilkazxq. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
