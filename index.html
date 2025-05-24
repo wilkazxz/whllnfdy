@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Owner Grup Seller</title>
+    <title>Pendaftaran Reseller - Mulai 25.000</title>
     <style>
         :root {
-            --soft-primary: #7C9ACF; /* Biru pastel */
-            --soft-secondary: #A8D8EA; /* Biru muda */
-            --soft-accent: #F5CEC7; /* Peach soft */
-            --soft-text: #5A5A5A; /* Abu-abu gelap soft */
-            --soft-bg: #F9F7F7; /* Background sangat soft */
-            --soft-whatsapp: #77D7B9; /* Hijau WhatsApp yang lebih soft */
+            --soft-primary: #7C9ACF;
+            --soft-secondary: #A8D8EA;
+            --soft-accent: #F5CEC7;
+            --soft-text: #5A5A5A;
+            --soft-bg: #F9F7F7;
+            --soft-whatsapp: #77D7B9;
+            --soft-price: #FF9E7D;
         }
         
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--soft-bg);
             margin: 0;
             padding: 20px;
@@ -28,64 +29,74 @@
         }
         
         .container {
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
+        }
+        
+        .header {
             text-align: center;
+            margin-bottom: 25px;
         }
         
         h1 {
             color: var(--soft-primary);
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             font-weight: 600;
-            font-size: 28px;
+        }
+        
+        .price-tag {
+            background-color: var(--soft-price);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
         
         .main-btn {
             background-color: var(--soft-primary);
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 16px;
             font-size: 17px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 500;
             box-shadow: 0 4px 15px rgba(124, 154, 207, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin: 20px 0;
         }
         
         .main-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(124, 154, 207, 0.3);
             background-color: #6B8BC8;
         }
         
         .form-container {
             display: none;
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.04);
-            margin-top: 25px;
-            text-align: left;
+            margin: 20px 0;
             border: 1px solid rgba(0,0,0,0.05);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--soft-text);
             font-size: 15px;
         }
         
@@ -95,26 +106,19 @@
             border: 1px solid #E0E0E0;
             border-radius: 8px;
             font-size: 15px;
-            transition: border 0.3s;
             background-color: #FCFCFC;
-        }
-        
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--soft-primary);
         }
         
         .submit-btn {
             background-color: var(--soft-whatsapp);
             color: white;
             border: none;
-            padding: 14px 24px;
+            padding: 14px;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
-            margin-top: 15px;
-            transition: all 0.3s;
+            margin-top: 10px;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -122,27 +126,19 @@
             gap: 8px;
         }
         
-        .submit-btn:hover {
-            background-color: #68C7A9;
-            transform: translateY(-2px);
-        }
-        
         .rules {
-            margin-top: 35px;
-            text-align: left;
             background: white;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 20px;
         }
         
         .rules h2 {
             color: var(--soft-primary);
             margin-top: 0;
             font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -150,14 +146,13 @@
         
         .rules ul {
             padding-left: 5px;
-            list-style-type: none;
+            list-style: none;
         }
         
         .rules li {
             margin-bottom: 12px;
-            padding-left: 25px;
+            padding-left: 28px;
             position: relative;
-            font-size: 15px;
         }
         
         .rules li:before {
@@ -169,23 +164,43 @@
             top: -5px;
         }
         
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .main-btn, .submit-btn {
-                padding: 14px 20px;
-                font-size: 16px;
-            }
-            
-            .form-container, .rules {
-                padding: 20px;
-            }
+        .prohibited {
+            color: #FF6B6B;
+            font-weight: 600;
+            background-color: #FFF2F2;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .packages {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .package {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .package-price {
+            font-weight: 700;
+            color: var(--soft-primary);
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        
+        .package-name {
+            font-weight: 600;
+            margin-bottom: 5px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -193,7 +208,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bergabung Sebagai Seller Kami</h1>
+        <div class="header">
+            <h1>Pendaftaran Reseller</h1>
+            <div class="price-tag">Mulai dari Rp25.000</div>
+            <p>Bergabunglah sebagai reseller kami dan mulai berjualan hari ini!</p>
+        </div>
+        
+        <div class="packages">
+            <div class="package">
+                <div class="package-name">Paket Basic</div>
+                <div class="package-price">Rp25.000</div>
+                <div>1 Bulan</div>
+            </div>
+            <div class="package">
+                <div class="package-name">Paket Premium</div>
+                <div class="package-price">Rp60.000</div>
+                <div>3 Bulan</div>
+            </div>
+            <div class="package">
+                <div class="package-name">Paket Pro</div>
+                <div class="package-price">Rp100.000</div>
+                <div>6 Bulan</div>
+            </div>
+        </div>
         
         <button id="showFormBtn" class="main-btn">
             <i class="fas fa-user-plus"></i> Daftar Sekarang
@@ -207,36 +244,38 @@
             
             <div class="form-group">
                 <label for="phone"><i class="fas fa-phone-alt"></i> Nomor WhatsApp</label>
-                <input type="tel" id="phone" placeholder="Contoh: 6282293786539">
+                <input type="tel" id="phone" placeholder="6282293786539">
             </div>
             
             <div class="form-group">
                 <label for="product"><i class="fas fa-shopping-bag"></i> Jenis Produk</label>
-                <input type="text" id="product" placeholder="Misal: Fashion, Elektronik">
+                <input type="text" id="product" placeholder="Contoh: Fashion, Elektronik">
             </div>
             
             <div class="form-group">
-                <label for="experience"><i class="fas fa-chart-line"></i> Pengalaman Berjualan</label>
-                <select id="experience">
-                    <option value="">Pilih pengalaman</option>
-                    <option value="pemula">Pemula (0-6 bulan)</option>
-                    <option value="menengah">Menengah (6 bulan - 2 tahun)</option>
-                    <option value="expert">Expert (>2 tahun)</option>
+                <label for="package"><i class="fas fa-box-open"></i> Pilih Paket</label>
+                <select id="package">
+                    <option value="">Pilih paket</option>
+                    <option value="basic">Basic - Rp25.000 (1 Bulan)</option>
+                    <option value="premium">Premium - Rp60.000 (3 Bulan)</option>
+                    <option value="pro">Pro - Rp100.000 (6 Bulan)</option>
                 </select>
             </div>
             
             <button id="submitBtn" class="submit-btn">
-                <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+                <i class="fab fa-whatsapp"></i> Lanjut Pembayaran
             </button>
         </div>
         
         <div class="rules">
-            <h2><i class="fas fa-clipboard-list"></i> Ketentuan Grup</h2>
+            <h2><i class="fas fa-clipboard-check"></i> Ketentuan Grup</h2>
             <ul>
+                <li>Harga mulai dari <strong>Rp25.000</strong> untuk 1 bulan</li>
+                <li>Pembayaran via transfer bank/DANA/OVO</li>
                 <li>Barang harus ready stock dan asli</li>
                 <li>Promosi sesuai waktu yang ditentukan</li>
-                <li>Berikan harga khusus untuk member</li>
-                <li>Dilarang melakukan penipuan</li>
+                <li><span class="prohibited">TIDAK BOLEH MENJUAL PANEL BOT</span></li>
+                <li>Dilarang menjual produk ilegal</li>
                 <li>Komunikasi dengan pembeli harus sopan</li>
                 <li>Admin berhak mengeluarkan seller yang melanggar</li>
             </ul>
@@ -248,7 +287,6 @@
         const formContainer = document.getElementById('formContainer');
         const submitBtn = document.getElementById('submitBtn');
         
-        // Toggle form
         showFormBtn.addEventListener('click', function() {
             const isShowing = formContainer.style.display === 'block';
             formContainer.style.display = isShowing ? 'none' : 'block';
@@ -257,30 +295,29 @@
                 : '<i class="fas fa-times"></i> Tutup Formulir';
         });
         
-        // Submit to WhatsApp
         submitBtn.addEventListener('click', function() {
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const product = document.getElementById('product').value.trim();
-            const experience = document.getElementById('experience').value;
+            const package = document.getElementById('package').value;
             
-            if (!name || !phone || !product || !experience) {
+            if (!name || !phone || !product || !package) {
                 alert('Harap lengkapi semua data terlebih dahulu');
                 return;
             }
             
-            const experienceText = {
-                'pemula': 'Pemula (0-6 bulan)',
-                'menengah': 'Menengah (6 bulan - 2 tahun)',
-                'expert': 'Expert (>2 tahun)'
-            }[experience];
+            const packageText = {
+                'basic': 'Basic - Rp25.000 (1 Bulan)',
+                'premium': 'Premium - Rp60.000 (3 Bulan)',
+                'pro': 'Pro - Rp100.000 (6 Bulan)'
+            }[package];
             
-            const message = `Halo Admin, saya ingin bergabung sebagai seller:\n\n` +
+            const message = `Halo Admin, saya ingin mendaftar sebagai reseller:\n\n` +
                            `*Nama:* ${name}\n` +
                            `*No. WA:* ${phone}\n` +
                            `*Produk:* ${product}\n` +
-                           `*Pengalaman:* ${experienceText}\n\n` +
-                           `Saya telah membaca dan menyetujui semua ketentuan grup.`;
+                           `*Paket:* ${packageText}\n\n` +
+                           `Saya telah membaca dan menyetujui semua ketentuan grup termasuk *TIDAK BOLEH MENJUAL PANEL BOT*.`;
             
             window.location.href = `https://wa.me/6282293786539?text=${encodeURIComponent(message)}`;
         });
