@@ -1,137 +1,159 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio Wilkazxq</title>
+  <title>Penerimaan Siswa Baru - Pondok Pesantren Al-Baqiyatul Hidayah</title>
   <style>
-    /* Reset & dasar */
+    /* Reset dan gaya dasar */
     * {
       box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
     }
     body {
-      background: #f5f7fa;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
     header {
+      background: #2a9d8f;
+      color: white;
+      padding: 30px 20px;
       text-align: center;
-      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
     }
     header h1 {
+      margin: 0;
       font-weight: 700;
-      font-size: 2.5rem;
-      color: #2c3e50;
-      letter-spacing: 1px;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin-top: 6px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      opacity: 0.9;
     }
     main {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      flex-grow: 1;
-    }
-    section {
+      max-width: 600px;
+      margin: 30px auto;
       background: white;
+      padding: 25px 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 20px;
-      flex: 1 1 320px;
-      max-width: 400px;
-      transition: box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
     }
-    section:hover {
-      box-shadow: 0 8px 24px rgba(44,62,80,0.3);
+    h2 {
+      text-align: center;
+      color: #264653;
+      margin-bottom: 20px;
     }
-    section h2 {
-      color: #2980b9;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-      border-bottom: 2px solid #2980b9;
-      padding-bottom: 6px;
+    form label {
+      display: block;
+      margin: 15px 0 6px;
+      font-weight: 600;
+      color: #264653;
     }
-    p {
-      line-height: 1.5;
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #a8dadc;
+      border-radius: 8px;
       font-size: 1rem;
-      color: #555;
+      transition: border-color 0.3s ease;
+      resize: vertical;
     }
-    ul {
-      list-style: disc inside;
-      margin-top: 10px;
-      color: #555;
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: #2a9d8f;
+      outline: none;
     }
-    ul li {
-      margin-bottom: 8px;
+    form textarea {
+      min-height: 80px;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 12px;
+      font-style: italic;
+      text-align: center;
+    }
+    button {
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #21867a;
     }
     footer {
       text-align: center;
-      padding: 15px;
       font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #ddd;
-      margin-top: 30px;
-    }
-    /* Kontak link */
-    .contact a {
-      color: #2980b9;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .contact a:hover {
-      color: #1c5980;
-      text-decoration: underline;
-    }
-    /* Responsive */
-    @media (max-width: 480px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-      }
-      section {
-        max-width: 90vw;
-      }
+      padding: 15px;
+      color: #666;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Portofolio Wilkazxq</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Tentang Saya</h2>
-      <p>Saya adalah developer dan kreator digital yang bersemangat dalam teknologi, pengembangan aplikasi, dan desain kreatif. Saya suka belajar dan mengeksplorasi hal baru setiap hari.</p>
-    </section>
-    <section>
-      <h2>Pengalaman</h2>
-      <ul>
-        <li>Mengembangkan aplikasi YoonStore untuk penjualan digital</li>
-        <li>Proyek web dan Android</li>
-        <li>UI/UX Design dan optimasi user experience</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Skill</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Firebase & Backend Development</li>
-        <li>Desain UI/UX dengan Figma dan Adobe XD</li>
-      </ul>
-    </section>
-    <section class="contact">
-      <h2>Kontak</h2>
-      <p>Email: <a href="mailto:wilkadev@gmail.com">wilkadev@gmail.com</a></p>
-      <p>WhatsApp: <a href="https://wa.me/6282293786539" target="_blank">+62 822-9378-6539</a></p>
-      <p>Website: <a href="https://www.wilkazxq.dev" target="_blank">www.wilkazxq.dev</a></p>
-    </section>
-  </main>
-  <footer>
-    &copy; 2025 Wilkazxq - All rights reserved
-  </footer>
+
+<header>
+  <h1>Pondok Pesantren Al-Baqiyatul Hidayah</h1>
+  <p>Penerimaan Siswa Baru - Gratis Pendaftaran</p>
+</header>
+
+<main>
+  <h2>Formulir Pendaftaran Siswa Baru</h2>
+  <form id="registrationForm" onsubmit="return submitForm(event)">
+    <label for="name">Nama Lengkap *</label>
+    <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap" />
+
+    <label for="birthdate">Tanggal Lahir *</label>
+    <input type="date" id="birthdate" name="birthdate" required />
+
+    <label for="gender">Jenis Kelamin *</label>
+    <select id="gender" name="gender" required>
+      <option value="" disabled selected>Pilih jenis kelamin</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
+    </select>
+
+    <label for="address">Alamat Lengkap *</label>
+    <textarea id="address" name="address" required placeholder="Masukkan alamat lengkap"></textarea>
+
+    <label for="phone">Nomor HP/WA *</label>
+    <input type="tel" id="phone" name="phone" required placeholder="Contoh: 081234567890" pattern="[0-9]{9,15}" />
+
+    <label for="school_origin">Asal Sekolah *</label>
+    <input type="text" id="school_origin" name="school_origin" required placeholder="Nama sekolah asal" />
+
+    <label for="notes">Catatan Tambahan (opsional)</label>
+    <textarea id="notes" name="notes" placeholder="Misal: Informasi tambahan atau pertanyaan"></textarea>
+
+    <button type="submit">Daftar Sekarang</button>
+  </form>
+  <p class="note">* Semua kolom wajib diisi kecuali catatan tambahan.</p>
+</main>
+
+<footer>
+  &copy; 2025 Pondok Pesantren Al-Baqiyatul Hidayah
+</footer>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+    // Contoh aksi submit sederhana, bisa dikembangkan sesuai backend
+    alert("Terima kasih sudah mendaftar! Formulir Anda telah diterima.");
+    document.getElementById('registrationForm').reset();
+    return false;
+  }
+</script>
+
 </body>
 </html>
