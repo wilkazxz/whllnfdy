@@ -1,151 +1,294 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kim Kiro Portfolio</title>
-<style>
-  /* Reset dan style dasar */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-  body {
-    background: #111;
-    color: #eee;
-    line-height: 1.6;
-  }
-  a {
-    color: #6ea5ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  header {
-    background: #222;
-    padding: 20px;
-    text-align: center;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-    letter-spacing: 2px;
-  }
-  nav {
-    margin-top: 10px;
-  }
-  nav a {
-    margin: 0 12px;
-    font-weight: 500;
-  }
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-  section {
-    margin-bottom: 40px;
-  }
-  h2 {
-    color: #6ea5ff;
-    font-weight: 700;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #6ea5ff;
-    display: inline-block;
-    padding-bottom: 5px;
-  }
-  p {
-    margin-bottom: 15px;
-    font-weight: 400;
-  }
-  ul.skills {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  ul.skills li {
-    background: #333;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    flex: 1 0 30%;
-    max-width: 150px;
-    text-align: center;
-  }
-  footer {
-    text-align: center;
-    padding: 25px 10px;
-    font-size: 0.9rem;
-    color: #777;
-    border-top: 1px solid #444;
-    margin-top: 60px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio Wilkazxq</title>
+  <style>
+    :root {
+      --bg-color-light: #e0f7f9;
+      --container-bg-light: #b3e5fc;
+      --border-color-light: #0288d1;
+      --text-color-light: #1565c0;
+      --highlight-color-light: #00695c;
+      --button-bg-light: #0288d1;
+      --button-bg-hover-light: #0277bd;
+      --content-bg-light: #e1f5fe;
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    ul.skills {
-      flex-direction: column;
+      --bg-color-dark: #121212;
+      --container-bg-dark: #1e1e1e;
+      --border-color-dark: #bb86fc;
+      --text-color-dark: #bb86fc;
+      --highlight-color-dark: #03dac6;
+      --button-bg-dark: #3700b3;
+      --button-bg-hover-dark: #6200ee;
+      --content-bg-dark: #2c2c2c;
     }
-    ul.skills li {
-      max-width: 100%;
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color-light);
+      padding: 20px;
+      color: var(--text-color-light);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-  }
-</style>
+
+    body.dark-mode {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--container-bg-light);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid var(--border-color-light);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body.dark-mode .container {
+      background: var(--container-bg-dark);
+      border-color: var(--border-color-dark);
+      box-shadow: 0 4px 15px rgba(187, 134, 252, 0.5);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--text-color-light);
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode h1 {
+      color: var(--text-color-dark);
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--button-bg-light);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-bg-hover-light);
+    }
+
+    body.dark-mode button {
+      background-color: var(--button-bg-dark);
+    }
+
+    body.dark-mode button:hover {
+      background-color: var(--button-bg-hover-dark);
+    }
+
+    .content {
+      display: none;
+      background: var(--content-bg-light);
+      margin-top: 5px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      border-left: 4px solid var(--border-color-light);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body.dark-mode .content {
+      background: var(--content-bg-dark);
+      border-left-color: var(--border-color-dark);
+    }
+
+    .highlight {
+      color: var(--highlight-color-light);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .highlight {
+      color: var(--highlight-color-dark);
+    }
+
+    .audio-player {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #audio {
+      display: none;
+    }
+
+    #playBtn {
+      background-color: var(--button-bg-light);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #playBtn:hover {
+      background-color: var(--button-bg-hover-light);
+    }
+
+    body.dark-mode #playBtn {
+      background-color: var(--button-bg-dark);
+    }
+
+    body.dark-mode #playBtn:hover {
+      background-color: var(--button-bg-hover-dark);
+    }
+
+    #visualizer {
+      width: 100%;
+      height: 60px;
+      margin-top: 10px;
+      background: var(--container-bg-light);
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode #visualizer {
+      background: var(--container-bg-dark);
+    }
+
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      width: auto;
+      text-align: center;
+      margin-bottom: 15px;
+      background-color: var(--button-bg-light);
+      transition: background-color 0.3s ease;
+    }
+
+    #darkModeToggle:hover {
+      background-color: var(--button-bg-hover-light);
+    }
+
+    body.dark-mode #darkModeToggle {
+      background-color: var(--button-bg-dark);
+    }
+
+    body.dark-mode #darkModeToggle:hover {
+      background-color: var(--button-bg-hover-dark);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Kim Kiro</h1>
-  <nav>
-    <a href="#about">Tentang</a>
-    <a href="#skills">Keahlian</a>
-    <a href="#projects">Proyek</a>
-    <a href="#music">Musik</a>
-  </nav>
-</header>
+  <div class="container">
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
 
-<main>
-  <section id="about">
-    <h2>Tentang Kim Kiro</h2>
-    <p>Kim Kiro adalah profesional kreatif asal Indonesia dengan pengalaman lebih dari dua tahun di bidang IT, desain, editing, dan pemasaran.</p>
-    <p>Lulusan SMK N1 Air Putih jurusan Teknik Komputer dan Jaringan (TKJ).</p>
-    <p>Minat: fotografi, membaca, memasak, pendakian, musik, seni digital.</p>
-  </section>
+    <h1>Portofolio Wilkazxq</h1>
 
-  <section id="skills">
-    <h2>Keahlian Profesional</h2>
-    <ul class="skills">
-      <li>Desain Grafis (90%)</li>
-      <li>Pengembangan Web (85%)</li>
-      <li>Fotografi (80%)</li>
-      <li>Editing Video (75%)</li>
-      <li>Copywriting (70%)</li>
-      <li>Manajemen Media Sosial (85%)</li>
-    </ul>
-  </section>
+    <button onclick="toggleContent('tentang')">Tentang Saya</button>
+    <div id="tentang" class="content">
+      <p>Saya <span class="highlight">Wilkazxq</span>, seorang developer & kreator digital yang suka ngoding, ngoprek, dan eksplorasi teknologi.</p>
+    </div>
 
-  <section id="projects">
-    <h2>Proyek Terkait</h2>
-    <ul>
-      <li><b>Grain Symbol Universe</b>: Kumpulan simbol dan karakter khusus.</li>
-      <li><b>GameZone</b>: Portal berita dan ulasan game.</li>
-      <li><b>Otakudesukai</b>: Platform streaming anime subtitle Indonesia.</li>
-      <li><b>All Payment Kiro</b>: Solusi pembayaran digital.</li>
-    </ul>
-  </section>
+    <button onclick="toggleContent('pengalaman')">Pengalaman</button>
+    <div id="pengalaman" class="content">
+      <p>- Membuat aplikasi <span class="highlight">YoonStore</span><br>
+         - Proyek Web & Android, UI/UX Design</p>
+    </div>
 
-  <section id="music">
-    <h2>Musik Favorit</h2>
-    <p>Beberapa lagu favorit Kim Kiro termasuk karya The Weeknd, Last Child, Christina Perri, dan Hindia.</p>
-  </section>
-</main>
+    <button onclick="toggleContent('skill')">Skill</button>
+    <div id="skill" class="content">
+      <p>- HTML, CSS, JavaScript<br>
+         - Firebase, WebView, Android<br>
+         - UI/UX, n8n Automation</p>
+    </div>
 
-<footer>
-  &copy; 2025 Kim Kiro. All rights reserved.
-</footer>
+    <button onclick="toggleContent('kontak')">Kontak</button>
+    <div id="kontak" class="content">
+      <p>Email: wilkadev@gmail.com<br>
+         WhatsApp: +62 822-9378-6539<br>
+         Web: www.wilkazxq.dev</p>
+    </div>
+
+    <div class="audio-player">
+      <button id="playBtn" onclick="toggleAudio()">► Play Musik</button>
+      <canvas id="visualizer"></canvas>
+      <audio id="audio" loop>
+        <source src="yoon.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(id) {
+      const element = document.getElementById(id);
+      element.style.display = element.style.display === "block" ? "none" : "block";
+    }
+
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (!isPlaying) {
+        audio.play();
+        playBtn.textContent = '❚❚ Pause Musik';
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+      } else {
+        audio.pause();
+        playBtn.textContent = '► Play Musik';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    const canvas = document.getElementById('visualizer');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+    const analyser = audioCtx.createAnalyser();
+    const source = audioCtx.createMediaElementSource(audio);
+
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    analyser.fftSize = 64;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    function draw() {
+      requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const barWidth = (canvas.width / bufferLength);
+      for (let i = 0; i < bufferLength; i++) {
+        const barHeight = dataArray[i] / 1.5;
+        ctx.fillStyle = 'var(--button-bg-light)';
+        if(document.body.classList.contains('dark-mode')) {
+          ctx.fillStyle = 'var(--button-bg-dark)';
+        }
+        ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
+      }
+    }
+    draw();
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 
 </body>
 </html>
