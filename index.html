@@ -1,159 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Penerimaan Siswa Baru - Pondok Pesantren Al-Baqiyatul Hidayah</title>
+  <meta charset="UTF-8">
+  <title>PPDB | Al-Baqiyatul Hidayah</title>
   <style>
-    /* Reset dan gaya dasar */
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e2e8f0, #f8fafc);
       margin: 0;
-      padding: 0;
-      color: #333;
+      padding: 40px 0;
     }
-    header {
-      background: #2a9d8f;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+
+    .container {
+      max-width: 700px;
+      background: #ffffff;
+      border: 2px solid #0f766e;
+      border-radius: 15px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 1.8rem;
-    }
-    header p {
-      margin-top: 6px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      opacity: 0.9;
-    }
-    main {
-      max-width: 600px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
-    }
+
     h2 {
       text-align: center;
-      color: #264653;
-      margin-bottom: 20px;
+      color: #0f766e;
+      margin-bottom: 25px;
     }
-    form label {
+
+    label {
       display: block;
-      margin: 15px 0 6px;
+      margin-top: 15px;
       font-weight: 600;
-      color: #264653;
+      color: #334155;
     }
-    form input, form select, form textarea {
+
+    input, select, textarea {
       width: 100%;
-      padding: 10px 14px;
-      border: 2px solid #a8dadc;
+      padding: 10px;
+      margin-top: 5px;
       border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-      resize: vertical;
+      border: 1.5px solid #94a3b8;
+      font-size: 15px;
     }
-    form input:focus, form select:focus, form textarea:focus {
-      border-color: #2a9d8f;
-      outline: none;
-    }
-    form textarea {
-      min-height: 80px;
-    }
-    .note {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 12px;
-      font-style: italic;
-      text-align: center;
-    }
+
     button {
-      background-color: #2a9d8f;
-      color: white;
-      border: none;
-      padding: 14px;
       width: 100%;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
+      padding: 12px;
       margin-top: 25px;
-      transition: background-color 0.3s ease;
+      background-color: #0f766e;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
+
     button:hover {
-      background-color: #21867a;
+      background-color: #0d5d56;
     }
-    footer {
+
+    .footer {
       text-align: center;
-      font-size: 0.9rem;
-      padding: 15px;
-      color: #666;
-      margin-top: 40px;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Pondok Pesantren Al-Baqiyatul Hidayah</h1>
-  <p>Penerimaan Siswa Baru - Gratis Pendaftaran</p>
-</header>
+  <div class="container">
+    <h2>Pendaftaran Santri Baru<br>Pondok Pesantren Al-Baqiyatul Hidayah</h2>
 
-<main>
-  <h2>Formulir Pendaftaran Siswa Baru</h2>
-  <form id="registrationForm" onsubmit="return submitForm(event)">
-    <label for="name">Nama Lengkap *</label>
-    <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap" />
+    <form onsubmit="return sendToWhatsApp(event)">
+      <label>Nama Lengkap *</label>
+      <input type="text" id="nama" required>
 
-    <label for="birthdate">Tanggal Lahir *</label>
-    <input type="date" id="birthdate" name="birthdate" required />
+      <label>Tanggal Lahir *</label>
+      <input type="date" id="lahir" required>
 
-    <label for="gender">Jenis Kelamin *</label>
-    <select id="gender" name="gender" required>
-      <option value="" disabled selected>Pilih jenis kelamin</option>
-      <option value="Laki-laki">Laki-laki</option>
-      <option value="Perempuan">Perempuan</option>
-    </select>
+      <label>Jenis Kelamin *</label>
+      <select id="gender" required>
+        <option value="">-- Pilih --</option>
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
 
-    <label for="address">Alamat Lengkap *</label>
-    <textarea id="address" name="address" required placeholder="Masukkan alamat lengkap"></textarea>
+      <label>Alamat Lengkap *</label>
+      <textarea id="alamat" rows="3" required></textarea>
 
-    <label for="phone">Nomor HP/WA *</label>
-    <input type="tel" id="phone" name="phone" required placeholder="Contoh: 081234567890" pattern="[0-9]{9,15}" />
+      <label>No. HP / WhatsApp *</label>
+      <input type="tel" id="hp" required>
 
-    <label for="school_origin">Asal Sekolah *</label>
-    <input type="text" id="school_origin" name="school_origin" required placeholder="Nama sekolah asal" />
+      <label>Asal Sekolah *</label>
+      <input type="text" id="sekolah" required>
 
-    <label for="notes">Catatan Tambahan (opsional)</label>
-    <textarea id="notes" name="notes" placeholder="Misal: Informasi tambahan atau pertanyaan"></textarea>
+      <label>Catatan Tambahan</label>
+      <textarea id="catatan" rows="2"></textarea>
 
-    <button type="submit">Daftar Sekarang</button>
-  </form>
-  <p class="note">* Semua kolom wajib diisi kecuali catatan tambahan.</p>
-</main>
+      <button type="submit">Kirim Pendaftaran via WhatsApp</button>
+    </form>
 
-<footer>
-  &copy; 2025 Pondok Pesantren Al-Baqiyatul Hidayah
-</footer>
+    <div class="footer">
+      Gratis Biaya Pendaftaran &amp; Pemasukan Santri Baru
+    </div>
+  </div>
 
-<script>
-  function submitForm(event) {
-    event.preventDefault();
-    // Contoh aksi submit sederhana, bisa dikembangkan sesuai backend
-    alert("Terima kasih sudah mendaftar! Formulir Anda telah diterima.");
-    document.getElementById('registrationForm').reset();
-    return false;
-  }
-</script>
+  <script>
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const lahir = document.getElementById("lahir").value;
+      const gender = document.getElementById("gender").value;
+      const alamat = document.getElementById("alamat").value;
+      const hp = document.getElementById("hp").value;
+      const sekolah = document.getElementById("sekolah").value;
+      const catatan = document.getElementById("catatan").value;
+
+      const pesan = `*Pendaftaran Santri Baru - Al-Baqiyatul Hidayah*%0A` +
+        `Nama: ${nama}%0A` +
+        `Tanggal Lahir: ${lahir}%0A` +
+        `Jenis Kelamin: ${gender}%0A` +
+        `Alamat: ${alamat}%0A` +
+        `No. HP/WA: ${hp}%0A` +
+        `Asal Sekolah: ${sekolah}%0A` +
+        `Catatan Tambahan: ${catatan}`;
+
+      window.open(`https://wa.me/6282293786539?text=${pesan}`, '_blank');
+      return false;
+    }
+  </script>
 
 </body>
 </html>
