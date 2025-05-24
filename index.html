@@ -6,21 +6,25 @@
     <title>Pendaftaran Owner Grup Seller</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --whatsapp: #25D366;
+            --soft-primary: #7C9ACF; /* Biru pastel */
+            --soft-secondary: #A8D8EA; /* Biru muda */
+            --soft-accent: #F5CEC7; /* Peach soft */
+            --soft-text: #5A5A5A; /* Abu-abu gelap soft */
+            --soft-bg: #F9F7F7; /* Background sangat soft */
+            --soft-whatsapp: #77D7B9; /* Hijau WhatsApp yang lebih soft */
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: var(--soft-bg);
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            color: var(--soft-text);
+            line-height: 1.6;
         }
         
         .container {
@@ -30,126 +34,189 @@
         }
         
         h1 {
-            color: var(--primary);
-            margin-bottom: 30px;
+            color: var(--soft-primary);
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 28px;
         }
         
-        .whatsapp-btn {
-            background-color: var(--whatsapp);
+        .main-btn {
+            background-color: var(--soft-primary);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 16px 32px;
+            font-size: 17px;
             border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(124, 154, 207, 0.2);
+            transition: all 0.3s ease;
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
-        .whatsapp-btn:hover {
+        .main-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(124, 154, 207, 0.3);
+            background-color: #6B8BC8;
         }
         
         .form-container {
             display: none;
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+            margin-top: 25px;
             text-align: left;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--soft-text);
+            font-size: 15px;
         }
         
         .form-group input, .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 12px 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border 0.3s;
+            background-color: #FCFCFC;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--soft-primary);
         }
         
         .submit-btn {
-            background-color: var(--primary);
+            background-color: var(--soft-whatsapp);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
+            padding: 14px 24px;
+            border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
-            transition: background-color 0.3s;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
         .submit-btn:hover {
-            background-color: #1a56db;
+            background-color: #68C7A9;
+            transform: translateY(-2px);
         }
         
         .rules {
-            margin-top: 30px;
+            margin-top: 35px;
             text-align: left;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .rules h2 {
-            color: var(--primary);
+            color: var(--soft-primary);
             margin-top: 0;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .rules ul {
-            padding-left: 20px;
+            padding-left: 5px;
+            list-style-type: none;
         }
         
         .rules li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+        }
+        
+        .rules li:before {
+            content: "•";
+            color: var(--soft-accent);
+            font-size: 24px;
+            position: absolute;
+            left: 5px;
+            top: -5px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .main-btn, .submit-btn {
+                padding: 14px 20px;
+                font-size: 16px;
+            }
+            
+            .form-container, .rules {
+                padding: 20px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>PENDAFTARAN OWNER GRUP</h1>
+        <h1>Bergabung Sebagai Seller Kami</h1>
         
-        <button id="showFormBtn" class="whatsapp-btn">
-            📌 KLIK UNTUK DAFTAR SEBAGAI OWNER
+        <button id="showFormBtn" class="main-btn">
+            <i class="fas fa-user-plus"></i> Daftar Sekarang
         </button>
         
         <div id="formContainer" class="form-container">
             <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" placeholder="Masukkan nama lengkap">
+                <label for="name"><i class="fas fa-user"></i> Nama Lengkap</label>
+                <input type="text" id="name" placeholder="Nama Anda">
             </div>
             
             <div class="form-group">
-                <label for="phone">Nomor WhatsApp</label>
+                <label for="phone"><i class="fas fa-phone-alt"></i> Nomor WhatsApp</label>
                 <input type="tel" id="phone" placeholder="Contoh: 6282293786539">
             </div>
             
             <div class="form-group">
-                <label for="product">Jenis Produk</label>
-                <input type="text" id="product" placeholder="Contoh: Fashion, Elektronik, dll">
+                <label for="product"><i class="fas fa-shopping-bag"></i> Jenis Produk</label>
+                <input type="text" id="product" placeholder="Misal: Fashion, Elektronik">
             </div>
             
             <div class="form-group">
-                <label for="experience">Pengalaman Berjualan</label>
+                <label for="experience"><i class="fas fa-chart-line"></i> Pengalaman Berjualan</label>
                 <select id="experience">
                     <option value="">Pilih pengalaman</option>
                     <option value="pemula">Pemula (0-6 bulan)</option>
@@ -158,17 +225,20 @@
                 </select>
             </div>
             
-            <button id="submitBtn" class="submit-btn">KIRIM VIA WHATSAPP</button>
+            <button id="submitBtn" class="submit-btn">
+                <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+            </button>
         </div>
         
         <div class="rules">
-            <h2>Peraturan Grup</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Ketentuan Grup</h2>
             <ul>
-                <li>Seller wajib memiliki barang ready stock</li>
-                <li>Dilarang melakukan spam promosi</li>
-                <li>Berikan harga terbaik untuk member grup</li>
-                <li>Dilarang keras melakukan penipuan</li>
-                <li>Pelanggaran akan dikenakan sanksi</li>
+                <li>Barang harus ready stock dan asli</li>
+                <li>Promosi sesuai waktu yang ditentukan</li>
+                <li>Berikan harga khusus untuk member</li>
+                <li>Dilarang melakukan penipuan</li>
+                <li>Komunikasi dengan pembeli harus sopan</li>
+                <li>Admin berhak mengeluarkan seller yang melanggar</li>
             </ul>
         </div>
     </div>
@@ -178,21 +248,24 @@
         const formContainer = document.getElementById('formContainer');
         const submitBtn = document.getElementById('submitBtn');
         
-        // Tampilkan form saat tombol diklik
+        // Toggle form
         showFormBtn.addEventListener('click', function() {
-            formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
-            showFormBtn.textContent = formContainer.style.display === 'block' ? '✖ TUTUP FORMULIR' : '📌 KLIK UNTUK DAFTAR SEBAGAI OWNER';
+            const isShowing = formContainer.style.display === 'block';
+            formContainer.style.display = isShowing ? 'none' : 'block';
+            showFormBtn.innerHTML = isShowing 
+                ? '<i class="fas fa-user-plus"></i> Daftar Sekarang' 
+                : '<i class="fas fa-times"></i> Tutup Formulir';
         });
         
-        // Kirim via WhatsApp
+        // Submit to WhatsApp
         submitBtn.addEventListener('click', function() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const product = document.getElementById('product').value;
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const product = document.getElementById('product').value.trim();
             const experience = document.getElementById('experience').value;
             
             if (!name || !phone || !product || !experience) {
-                alert('Harap isi semua data terlebih dahulu!');
+                alert('Harap lengkapi semua data terlebih dahulu');
                 return;
             }
             
@@ -202,12 +275,12 @@
                 'expert': 'Expert (>2 tahun)'
             }[experience];
             
-            const message = `Halo Admin, saya ingin mendaftar sebagai seller:\n\n` +
-                           `Nama: ${name}\n` +
-                           `No. WA: ${phone}\n` +
-                           `Produk: ${product}\n` +
-                           `Pengalaman: ${experienceText}\n\n` +
-                           `Saya setuju dengan semua peraturan grup.`;
+            const message = `Halo Admin, saya ingin bergabung sebagai seller:\n\n` +
+                           `*Nama:* ${name}\n` +
+                           `*No. WA:* ${phone}\n` +
+                           `*Produk:* ${product}\n` +
+                           `*Pengalaman:* ${experienceText}\n\n` +
+                           `Saya telah membaca dan menyetujui semua ketentuan grup.`;
             
             window.location.href = `https://wa.me/6282293786539?text=${encodeURIComponent(message)}`;
         });
