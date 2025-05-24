@@ -3,239 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Seller - Owner Grup</title>
+    <title>Pendaftaran Owner Grup Seller</title>
     <style>
         :root {
-            --primary: #2563eb; /* Warna biru seperti sebelumnya */
+            --primary: #2563eb;
             --dark: #1e293b;
             --light: #f8fafc;
-            --danger: #ef4444;
+            --whatsapp: #25D366;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
             background-color: var(--light);
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
+            max-width: 500px;
+            width: 100%;
             text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary);
         }
         
         h1 {
             color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .card h2 {
-            color: var(--primary);
-            margin-top: 0;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 5px;
-            font-size: 1rem;
+            margin-bottom: 30px;
         }
         
         .whatsapp-btn {
-            display: block;
-            background-color: #25D366;
+            background-color: var(--whatsapp);
             color: white;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-top: 1.5rem;
-            transition: transform 0.2s;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
         
-        .rules-list {
-            list-style-type: none;
-            padding: 0;
+        .form-container {
+            display: none;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            text-align: left;
         }
         
-        .rules-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            align-items: flex-start;
+        .form-group {
+            margin-bottom: 15px;
         }
         
-        .rules-list li:last-child {
-            border-bottom: none;
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--dark);
         }
         
-        .rule-number {
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .submit-btn {
             background-color: var(--primary);
             color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            flex-shrink: 0;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s;
         }
         
-        .important-note {
-            background-color: #fef2f2;
-            border-left: 4px solid var(--danger);
-            padding: 1rem;
-            margin: 1.5rem 0;
+        .submit-btn:hover {
+            background-color: #1a56db;
         }
         
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-            color: #64748b;
+        .rules {
+            margin-top: 30px;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .rules h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .rules ul {
+            padding-left: 20px;
+        }
+        
+        .rules li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>PENDAFTARAN OWNER GRUP</h1>
-            <p>Formulir Pendaftaran Seller</p>
-        </header>
+        <h1>PENDAFTARAN OWNER GRUP</h1>
         
-        <div class="card">
-            <h2>Peraturan Grup</h2>
-            <ul class="rules-list">
-                <li>
-                    <div class="rule-number">1</div>
-                    <div>Seller wajib memiliki barang ready stock untuk dijual</div>
-                </li>
-                <li>
-                    <div class="rule-number">2</div>
-                    <div>Dilarang melakukan spam promosi di grup</div>
-                </li>
-                <li>
-                    <div class="rule-number">3</div>
-                    <div>Wajib memberikan harga terbaik untuk member grup</div>
-                </li>
-                <li>
-                    <div class="rule-number">4</div>
-                    <div>Dilarang menipu pembeli dengan alasan apapun</div>
-                </li>
-                <li>
-                    <div class="rule-number">5</div>
-                    <div>Seller yang melanggar akan dikeluarkan dari grup</div>
-                </li>
-            </ul>
-            
-            <div class="important-note">
-                <strong>PERHATIAN:</strong> Pastikan Anda membaca dan menyetujui semua peraturan di atas sebelum mendaftar.
-            </div>
-        </div>
+        <button id="showFormBtn" class="whatsapp-btn">
+            📌 KLIK UNTUK DAFTAR SEBAGAI OWNER
+        </button>
         
-        <div class="card">
-            <h2>Data Diri</h2>
+        <div id="formContainer" class="form-container">
             <div class="form-group">
-                <label for="fullName">Nama Lengkap</label>
-                <input type="text" id="fullName" required>
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" placeholder="Masukkan nama lengkap">
             </div>
             
             <div class="form-group">
                 <label for="phone">Nomor WhatsApp</label>
-                <input type="tel" id="phone" required>
+                <input type="tel" id="phone" placeholder="Contoh: 6282293786539">
             </div>
             
             <div class="form-group">
-                <label for="product">Jenis Produk yang Dijual</label>
-                <input type="text" id="product" required>
+                <label for="product">Jenis Produk</label>
+                <input type="text" id="product" placeholder="Contoh: Fashion, Elektronik, dll">
             </div>
             
             <div class="form-group">
                 <label for="experience">Pengalaman Berjualan</label>
-                <select id="experience" required>
+                <select id="experience">
                     <option value="">Pilih pengalaman</option>
-                    <option value="newbie">Pemula (0-6 bulan)</option>
-                    <option value="intermediate">Menengah (6 bulan - 2 tahun)</option>
+                    <option value="pemula">Pemula (0-6 bulan)</option>
+                    <option value="menengah">Menengah (6 bulan - 2 tahun)</option>
                     <option value="expert">Expert (>2 tahun)</option>
                 </select>
             </div>
             
-            <a href="#" id="registerBtn" class="whatsapp-btn">MELAMAR SEBAGAI OWNER</a>
+            <button id="submitBtn" class="submit-btn">KIRIM VIA WHATSAPP</button>
         </div>
         
-        <footer>
-            <p>&copy; 2023 Pendaftaran Owner Grup. All rights reserved.</p>
-        </footer>
+        <div class="rules">
+            <h2>Peraturan Grup</h2>
+            <ul>
+                <li>Seller wajib memiliki barang ready stock</li>
+                <li>Dilarang melakukan spam promosi</li>
+                <li>Berikan harga terbaik untuk member grup</li>
+                <li>Dilarang keras melakukan penipuan</li>
+                <li>Pelanggaran akan dikenakan sanksi</li>
+            </ul>
+        </div>
     </div>
 
     <script>
-        document.getElementById('registerBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Ambil data dari form
-            const fullName = document.getElementById('fullName').value;
+        const showFormBtn = document.getElementById('showFormBtn');
+        const formContainer = document.getElementById('formContainer');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Tampilkan form saat tombol diklik
+        showFormBtn.addEventListener('click', function() {
+            formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+            showFormBtn.textContent = formContainer.style.display === 'block' ? '✖ TUTUP FORMULIR' : '📌 KLIK UNTUK DAFTAR SEBAGAI OWNER';
+        });
+        
+        // Kirim via WhatsApp
+        submitBtn.addEventListener('click', function() {
+            const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const product = document.getElementById('product').value;
             const experience = document.getElementById('experience').value;
             
-            // Validasi form
-            if (!fullName || !phone || !product || !experience) {
+            if (!name || !phone || !product || !experience) {
                 alert('Harap isi semua data terlebih dahulu!');
                 return;
             }
             
-            // Buat pesan WhatsApp
-            const message = `Halo, saya ingin mendaftar sebagai seller:\n\n` +
-                            `Nama: ${fullName}\n` +
-                            `No. WA: ${phone}\n` +
-                            `Produk: ${product}\n` +
-                            `Pengalaman: ${document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text}\n\n` +
-                            `Saya telah membaca dan menyetujui semua peraturan grup.`;
+            const experienceText = {
+                'pemula': 'Pemula (0-6 bulan)',
+                'menengah': 'Menengah (6 bulan - 2 tahun)',
+                'expert': 'Expert (>2 tahun)'
+            }[experience];
             
-            // Encode pesan untuk URL
-            const encodedMessage = encodeURIComponent(message);
+            const message = `Halo Admin, saya ingin mendaftar sebagai seller:\n\n` +
+                           `Nama: ${name}\n` +
+                           `No. WA: ${phone}\n` +
+                           `Produk: ${product}\n` +
+                           `Pengalaman: ${experienceText}\n\n` +
+                           `Saya setuju dengan semua peraturan grup.`;
             
-            // Redirect ke WhatsApp
-            window.location.href = `https://wa.me/6282293786539?text=${encodedMessage}`;
+            window.location.href = `https://wa.me/6282293786539?text=${encodeURIComponent(message)}`;
         });
     </script>
 </body>
