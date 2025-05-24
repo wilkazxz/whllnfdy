@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kim Kiro Portfolio</title>
+<style>
+  /* Reset dan style dasar */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  body {
+    background: #111;
+    color: #eee;
+    line-height: 1.6;
+  }
+  a {
+    color: #6ea5ff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  header {
+    background: #222;
+    padding: 20px;
+    text-align: center;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+  }
+  nav {
+    margin-top: 10px;
+  }
+  nav a {
+    margin: 0 12px;
+    font-weight: 500;
+  }
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  section {
+    margin-bottom: 40px;
+  }
+  h2 {
+    color: #6ea5ff;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #6ea5ff;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  p {
+    margin-bottom: 15px;
+    font-weight: 400;
+  }
+  ul.skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  ul.skills li {
+    background: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex: 1 0 30%;
+    max-width: 150px;
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #444;
+    margin-top: 60px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    ul.skills {
+      flex-direction: column;
+    }
+    ul.skills li {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kim Kiro</h1>
+  <nav>
+    <a href="#about">Tentang</a>
+    <a href="#skills">Keahlian</a>
+    <a href="#projects">Proyek</a>
+    <a href="#music">Musik</a>
+  </nav>
+</header>
+
+<main>
+  <section id="about">
+    <h2>Tentang Kim Kiro</h2>
+    <p>Kim Kiro adalah profesional kreatif asal Indonesia dengan pengalaman lebih dari dua tahun di bidang IT, desain, editing, dan pemasaran.</p>
+    <p>Lulusan SMK N1 Air Putih jurusan Teknik Komputer dan Jaringan (TKJ).</p>
+    <p>Minat: fotografi, membaca, memasak, pendakian, musik, seni digital.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Keahlian Profesional</h2>
+    <ul class="skills">
+      <li>Desain Grafis (90%)</li>
+      <li>Pengembangan Web (85%)</li>
+      <li>Fotografi (80%)</li>
+      <li>Editing Video (75%)</li>
+      <li>Copywriting (70%)</li>
+      <li>Manajemen Media Sosial (85%)</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Proyek Terkait</h2>
+    <ul>
+      <li><b>Grain Symbol Universe</b>: Kumpulan simbol dan karakter khusus.</li>
+      <li><b>GameZone</b>: Portal berita dan ulasan game.</li>
+      <li><b>Otakudesukai</b>: Platform streaming anime subtitle Indonesia.</li>
+      <li><b>All Payment Kiro</b>: Solusi pembayaran digital.</li>
+    </ul>
+  </section>
+
+  <section id="music">
+    <h2>Musik Favorit</h2>
+    <p>Beberapa lagu favorit Kim Kiro termasuk karya The Weeknd, Last Child, Christina Perri, dan Hindia.</p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Kim Kiro. All rights reserved.
+</footer>
+
+</body>
+</html>
