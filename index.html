@@ -19,7 +19,7 @@
       z-index: 9999;
     }
 
-    /* === Umum & variabel warna === */
+    /* === Variabel warna dan tema === */
     :root {
       --bg-color-light: #e0f7f9;
       --container-bg-light: #b3e5fc;
@@ -86,6 +86,8 @@
       margin-top: 10px;
       font-size: 16px;
       cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: var(--button-bg-hover-light);
@@ -104,6 +106,8 @@
       padding: 10px 15px;
       border-radius: 6px;
       border-left: 4px solid var(--border-color-light);
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      overflow: hidden;
     }
 
     body.dark-mode .content {
@@ -111,22 +115,34 @@
       border-left-color: var(--border-color-dark);
     }
 
-    .audio-player { margin-top: 20px; text-align: center; }
-    #audio { display: none; }
-    #playBtn, #darkModeToggle {
-      width: auto; text-align: center;
+    .audio-player {
+      margin-top: 20px;
+      text-align: center;
     }
 
+    #audio {
+      display: none;
+    }
+
+    #playBtn, #darkModeToggle {
+      width: auto;
+      text-align: center;
+    }
+
+    /* Visualizer */
     #visualizer {
       width: 100%;
-      height: 60px;
-      margin-top: 10px;
-      background: var(--container-bg-light);
-      border-radius: 8px;
+      height: 80px;
+      margin-top: 15px;
+      border-radius: 12px;
+      background: var(--content-bg-light);
+      box-shadow: inset 0 0 10px rgba(2, 136, 209, 0.4);
+      display: block;
     }
 
     body.dark-mode #visualizer {
-      background: var(--container-bg-dark);
+      background: var(--content-bg-dark);
+      box-shadow: inset 0 0 15px rgba(187, 134, 252, 0.6);
     }
 
     .info-widgets {
@@ -134,31 +150,6 @@
       display: flex;
       justify-content: space-between;
       font-size: 14px;
-    }
-
-    /* Progress bar skill */
-    .progress-bar {
-      background-color: var(--content-bg-light);
-      border-radius: 8px;
-      overflow: hidden;
-      height: 20px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border-color-light);
-    }
-
-    body.dark-mode .progress-bar {
-      background-color: var(--content-bg-dark);
-      border-color: var(--border-color-dark);
-    }
-
-    .progress {
-      height: 100%;
-      background-color: var(--button-bg-light);
-      transition: width 0.5s ease;
-    }
-
-    body.dark-mode .progress {
-      background-color: var(--button-bg-dark);
     }
   </style>
 </head>
@@ -188,30 +179,7 @@
 
     <button onclick="toggleContent('skill')">Skill</button>
     <div id="skill" class="content">
-      <p>HTML</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 75%;"></div>
-      </div>
-
-      <p>CSS</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 65%;"></div>
-      </div>
-
-      <p>JavaScript</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 60%;"></div>
-      </div>
-
-      <p>Firebase</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 50%;"></div>
-      </div>
-
-      <p>UI/UX Design</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: 55%;"></div>
-      </div>
+      <p>- HTML 75%<br>- CSS 70%<br>- JavaScript 60%<br>- Firebase, WebView, Android<br>- UI/UX, n8n Automation</p>
     </div>
 
     <button onclick="toggleContent('kontak')">Kontak</button>
@@ -237,17 +205,28 @@
 
     function toggleContent(id) {
       const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
+      el.style.display = (el.style.display === "block") ? "none" : "block";
     }
 
-    // Audio & Visualizer
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Audio & Visualizer setup
     const audio = document.getElementById('audio');
     const playBtn = document.getElementById('playBtn');
-    let isPlaying = false;
     const canvas = document.getElementById('visualizer');
     const ctx = canvas.getContext('2d');
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    let isPlaying = false;
+
+    // Resize canvas to container width
+    function resizeCanvas() {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioCtx = new AudioContext();
@@ -256,6 +235,7 @@
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
     analyser.fftSize = 64;
+
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
 
@@ -263,11 +243,29 @@
       requestAnimationFrame(draw);
       analyser.getByteFrequencyData(dataArray);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const barWidth = canvas.width / bufferLength;
+
+      const barWidth = canvas.width / bufferLength * 0.6; // Batang ramping
+      const gap = canvas.width / bufferLength * 0.4;      // Jarak antar batang
+
       for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i] / 1.5;
-        ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#bb86fc' : '#0288d1';
-        ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
+        const barHeight = dataArray[i] / 2;
+        const x = i * (barWidth + gap);
+        const y = canvas.height - barHeight;
+
+        // Gradient warna batang
+        let gradient = ctx.createLinearGradient(x, y, x, canvas.height);
+        if (document.body.classList.contains('dark-mode')) {
+          gradient.addColorStop(0, '#bb86fc');
+          gradient.addColorStop(1, '#3700b3');
+        } else {
+          gradient.addColorStop(0, '#0288d1');
+          gradient.addColorStop(1, '#01579b');
+        }
+
+        ctx.fillStyle = gradient;
+        ctx.shadowColor = 'rgba(0,0,0,0.3)';
+        ctx.shadowBlur = 5;
+        ctx.fillRect(x, y, barWidth, barHeight);
       }
     }
     draw();
@@ -284,11 +282,7 @@
       isPlaying = !isPlaying;
     }
 
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    // Bitcoin Price
+    // Bitcoin Price update
     async function updateBTC() {
       try {
         const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/IDR.json');
@@ -302,23 +296,7 @@
     updateBTC();
     setInterval(updateBTC, 30000);
 
-    // Local Time
+    // Local Time update
     function updateTime() {
       const now = new Date();
-      document.getElementById('localTime').textContent =
-        'Waktu: ' + now.toLocaleTimeString('id-ID');
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(() => {
-        console.log("Service Worker Registered");
-      });
-    }
-  </script>
-</body>
-</html>
+      document.getElementById('local
