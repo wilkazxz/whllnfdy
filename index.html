@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Reseller - Mulai 25.000</title>
+    <title>Pendaftaran Reseller - Rp25.000</title>
     <style>
         :root {
             --soft-primary: #7C9ACF;
@@ -29,7 +29,7 @@
         }
         
         .container {
-            max-width: 550px;
+            max-width: 500px;
             width: 100%;
         }
         
@@ -47,12 +47,13 @@
         .price-tag {
             background-color: var(--soft-price);
             color: white;
-            padding: 6px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(255, 158, 125, 0.3);
         }
         
         .main-btn {
@@ -71,7 +72,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .main-btn:hover {
@@ -170,37 +171,15 @@
             background-color: #FFF2F2;
             padding: 2px 6px;
             border-radius: 4px;
+            display: inline-block;
+            margin: 5px 0;
         }
         
-        .packages {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .package {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
-            flex: 1;
-            min-width: 120px;
+        .price-info {
             text-align: center;
-        }
-        
-        .package-price {
-            font-weight: 700;
-            color: var(--soft-primary);
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        
-        .package-name {
-            font-weight: 600;
-            margin-bottom: 5px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #777;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -210,30 +189,16 @@
     <div class="container">
         <div class="header">
             <h1>Pendaftaran Reseller</h1>
-            <div class="price-tag">Mulai dari Rp25.000</div>
+            <div class="price-tag">Hanya Rp25.000</div>
             <p>Bergabunglah sebagai reseller kami dan mulai berjualan hari ini!</p>
         </div>
         
-        <div class="packages">
-            <div class="package">
-                <div class="package-name">Paket Basic</div>
-                <div class="package-price">Rp25.000</div>
-                <div>1 Bulan</div>
-            </div>
-            <div class="package">
-                <div class="package-name">Paket Premium</div>
-                <div class="package-price">Rp60.000</div>
-                <div>3 Bulan</div>
-            </div>
-            <div class="package">
-                <div class="package-name">Paket Pro</div>
-                <div class="package-price">Rp100.000</div>
-                <div>6 Bulan</div>
-            </div>
+        <div class="price-info">
+            <i class="fas fa-info-circle"></i> Biaya pendaftaran sekali untuk selamanya
         </div>
         
         <button id="showFormBtn" class="main-btn">
-            <i class="fas fa-user-plus"></i> Daftar Sekarang
+            <i class="fas fa-cart-plus"></i> Daftar Sekarang
         </button>
         
         <div id="formContainer" class="form-container">
@@ -252,15 +217,7 @@
                 <input type="text" id="product" placeholder="Contoh: Fashion, Elektronik">
             </div>
             
-            <div class="form-group">
-                <label for="package"><i class="fas fa-box-open"></i> Pilih Paket</label>
-                <select id="package">
-                    <option value="">Pilih paket</option>
-                    <option value="basic">Basic - Rp25.000 (1 Bulan)</option>
-                    <option value="premium">Premium - Rp60.000 (3 Bulan)</option>
-                    <option value="pro">Pro - Rp100.000 (6 Bulan)</option>
-                </select>
-            </div>
+            <input type="hidden" id="package" value="basic">
             
             <button id="submitBtn" class="submit-btn">
                 <i class="fab fa-whatsapp"></i> Lanjut Pembayaran
@@ -270,7 +227,7 @@
         <div class="rules">
             <h2><i class="fas fa-clipboard-check"></i> Ketentuan Grup</h2>
             <ul>
-                <li>Harga mulai dari <strong>Rp25.000</strong> untuk 1 bulan</li>
+                <li>Biaya pendaftaran <strong>Rp25.000</strong> (sekali bayar)</li>
                 <li>Pembayaran via transfer bank/DANA/OVO</li>
                 <li>Barang harus ready stock dan asli</li>
                 <li>Promosi sesuai waktu yang ditentukan</li>
@@ -291,32 +248,30 @@
             const isShowing = formContainer.style.display === 'block';
             formContainer.style.display = isShowing ? 'none' : 'block';
             showFormBtn.innerHTML = isShowing 
-                ? '<i class="fas fa-user-plus"></i> Daftar Sekarang' 
+                ? '<i class="fas fa-cart-plus"></i> Daftar Sekarang' 
                 : '<i class="fas fa-times"></i> Tutup Formulir';
+            
+            // Scroll ke form ketika dibuka
+            if (!isShowing) {
+                formContainer.scrollIntoView({ behavior: 'smooth' });
+            }
         });
         
         submitBtn.addEventListener('click', function() {
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const product = document.getElementById('product').value.trim();
-            const package = document.getElementById('package').value;
             
-            if (!name || !phone || !product || !package) {
+            if (!name || !phone || !product) {
                 alert('Harap lengkapi semua data terlebih dahulu');
                 return;
             }
-            
-            const packageText = {
-                'basic': 'Basic - Rp25.000 (1 Bulan)',
-                'premium': 'Premium - Rp60.000 (3 Bulan)',
-                'pro': 'Pro - Rp100.000 (6 Bulan)'
-            }[package];
             
             const message = `Halo Admin, saya ingin mendaftar sebagai reseller:\n\n` +
                            `*Nama:* ${name}\n` +
                            `*No. WA:* ${phone}\n` +
                            `*Produk:* ${product}\n` +
-                           `*Paket:* ${packageText}\n\n` +
+                           `*Paket:* Basic - Rp25.000 (Sekali Bayar)\n\n` +
                            `Saya telah membaca dan menyetujui semua ketentuan grup termasuk *TIDAK BOLEH MENJUAL PANEL BOT*.`;
             
             window.location.href = `https://wa.me/6282293786539?text=${encodeURIComponent(message)}`;
