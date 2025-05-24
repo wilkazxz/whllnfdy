@@ -19,7 +19,7 @@
       z-index: 9999;
     }
 
-    /* === Tambahan sebelumnya & umum === */
+    /* === Umum & variabel warna === */
     :root {
       --bg-color-light: #e0f7f9;
       --container-bg-light: #b3e5fc;
@@ -135,6 +135,31 @@
       justify-content: space-between;
       font-size: 14px;
     }
+
+    /* Progress bar skill */
+    .progress-bar {
+      background-color: var(--content-bg-light);
+      border-radius: 8px;
+      overflow: hidden;
+      height: 20px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color-light);
+    }
+
+    body.dark-mode .progress-bar {
+      background-color: var(--content-bg-dark);
+      border-color: var(--border-color-dark);
+    }
+
+    .progress {
+      height: 100%;
+      background-color: var(--button-bg-light);
+      transition: width 0.5s ease;
+    }
+
+    body.dark-mode .progress {
+      background-color: var(--button-bg-dark);
+    }
   </style>
 </head>
 <body>
@@ -163,7 +188,30 @@
 
     <button onclick="toggleContent('skill')">Skill</button>
     <div id="skill" class="content">
-      <p>- HTML, CSS, JavaScript<br>- Firebase, WebView, Android<br>- UI/UX, n8n Automation</p>
+      <p>HTML</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 75%;"></div>
+      </div>
+
+      <p>CSS</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 65%;"></div>
+      </div>
+
+      <p>JavaScript</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 60%;"></div>
+      </div>
+
+      <p>Firebase</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 50%;"></div>
+      </div>
+
+      <p>UI/UX Design</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 55%;"></div>
+      </div>
     </div>
 
     <button onclick="toggleContent('kontak')">Kontak</button>
