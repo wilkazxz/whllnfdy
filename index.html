@@ -1,136 +1,130 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>PPDB | Al-Baqiyatul Hidayah</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #e2e8f0, #f8fafc);
-      margin: 0;
-      padding: 40px 0;
-    }
-
-    .container {
-      max-width: 700px;
-      background: #ffffff;
-      border: 2px solid #0f766e;
-      border-radius: 15px;
-      margin: auto;
-      padding: 30px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #0f766e;
-      margin-bottom: 25px;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-      color: #334155;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1.5px solid #94a3b8;
-      font-size: 15px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 25px;
-      background-color: #0f766e;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #0d5d56;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #64748b;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PPDB Al-Baqiyatul Hidayah</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f6;
+    margin: 0; padding: 20px;
+  }
+  .box {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1.5px solid #0f766e;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  h2 {
+    margin: 0 0 20px;
+    color: #0f766e;
+    font-weight: 700;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    resize: vertical;
+  }
+  button {
+    margin-top: 25px;
+    width: 100%;
+    background: #0f766e;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0b594c;
+  }
+  .footer {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    color: #555;
+  }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Pendaftaran Santri Baru<br>Pondok Pesantren Al-Baqiyatul Hidayah</h2>
+<div class="box">
+  <h2>PPDB Al-Baqiyatul Hidayah</h2>
+  <form onsubmit="return sendWA(event)">
+    <label for="nama">Nama Lengkap *</label>
+    <input type="text" id="nama" required />
 
-    <form onsubmit="return sendToWhatsApp(event)">
-      <label>Nama Lengkap *</label>
-      <input type="text" id="nama" required>
+    <label for="tgl">Tanggal Lahir *</label>
+    <input type="date" id="tgl" required />
 
-      <label>Tanggal Lahir *</label>
-      <input type="date" id="lahir" required>
+    <label for="gender">Jenis Kelamin *</label>
+    <select id="gender" required>
+      <option value="">-- Pilih --</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
+    </select>
 
-      <label>Jenis Kelamin *</label>
-      <select id="gender" required>
-        <option value="">-- Pilih --</option>
-        <option value="Laki-laki">Laki-laki</option>
-        <option value="Perempuan">Perempuan</option>
-      </select>
+    <label for="alamat">Alamat Lengkap *</label>
+    <textarea id="alamat" rows="3" required></textarea>
 
-      <label>Alamat Lengkap *</label>
-      <textarea id="alamat" rows="3" required></textarea>
+    <label for="hp">No. HP / WhatsApp *</label>
+    <input type="tel" id="hp" required />
 
-      <label>No. HP / WhatsApp *</label>
-      <input type="tel" id="hp" required>
+    <label for="sekolah">Asal Sekolah *</label>
+    <input type="text" id="sekolah" required />
 
-      <label>Asal Sekolah *</label>
-      <input type="text" id="sekolah" required>
+    <label for="catatan">Catatan Tambahan</label>
+    <textarea id="catatan" rows="2"></textarea>
 
-      <label>Catatan Tambahan</label>
-      <textarea id="catatan" rows="2"></textarea>
+    <button type="submit">Kirim Pendaftaran</button>
+  </form>
+  <div class="footer">Gratis Pendaftaran dan Pemasukan Santri Baru</div>
+</div>
 
-      <button type="submit">Kirim Pendaftaran via WhatsApp</button>
-    </form>
+<script>
+  function sendWA(e) {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value.trim();
+    const tgl = document.getElementById('tgl').value;
+    const gender = document.getElementById('gender').value;
+    const alamat = document.getElementById('alamat').value.trim();
+    const hp = document.getElementById('hp').value.trim();
+    const sekolah = document.getElementById('sekolah').value.trim();
+    const catatan = document.getElementById('catatan').value.trim();
 
-    <div class="footer">
-      Gratis Biaya Pendaftaran &amp; Pemasukan Santri Baru
-    </div>
-  </div>
+    let pesan = `*Pendaftaran Santri Baru - Al-Baqiyatul Hidayah*%0A`;
+    pesan += `Nama: ${nama}%0A`;
+    pesan += `Tanggal Lahir: ${tgl}%0A`;
+    pesan += `Jenis Kelamin: ${gender}%0A`;
+    pesan += `Alamat: ${alamat}%0A`;
+    pesan += `No HP/WA: ${hp}%0A`;
+    pesan += `Asal Sekolah: ${sekolah}%0A`;
+    pesan += `Catatan: ${catatan ? catatan : '-'}`;
 
-  <script>
-    function sendToWhatsApp(event) {
-      event.preventDefault();
-      const nama = document.getElementById("nama").value;
-      const lahir = document.getElementById("lahir").value;
-      const gender = document.getElementById("gender").value;
-      const alamat = document.getElementById("alamat").value;
-      const hp = document.getElementById("hp").value;
-      const sekolah = document.getElementById("sekolah").value;
-      const catatan = document.getElementById("catatan").value;
-
-      const pesan = `*Pendaftaran Santri Baru - Al-Baqiyatul Hidayah*%0A` +
-        `Nama: ${nama}%0A` +
-        `Tanggal Lahir: ${lahir}%0A` +
-        `Jenis Kelamin: ${gender}%0A` +
-        `Alamat: ${alamat}%0A` +
-        `No. HP/WA: ${hp}%0A` +
-        `Asal Sekolah: ${sekolah}%0A` +
-        `Catatan Tambahan: ${catatan}`;
-
-      window.open(`https://wa.me/6282293786539?text=${pesan}`, '_blank');
-      return false;
-    }
-  </script>
+    const waNumber = '6282293786539';
+    const url = `https://wa.me/${waNumber}?text=${pesan}`;
+    window.open(url, '_blank');
+    return false;
+  }
+</script>
 
 </body>
 </html>
