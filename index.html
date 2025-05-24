@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wilkazxq - Developer & Creator</title>
+    <title>Pendaftaran Seller - Owner Grup</title>
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #2563eb; /* Warna biru seperti sebelumnya */
             --dark: #1e293b;
             --light: #f8fafc;
+            --danger: #ef4444;
         }
         
         body {
@@ -29,6 +30,8 @@
         header {
             text-align: center;
             margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
         }
         
         h1 {
@@ -36,66 +39,92 @@
             margin-bottom: 0.5rem;
         }
         
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary);
-            margin: 1rem auto;
-        }
-        
-        .contact-info {
+        .card {
             background: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
         }
         
-        .section {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .section h2 {
+        .card h2 {
             color: var(--primary);
+            margin-top: 0;
             border-bottom: 2px solid var(--primary);
             padding-bottom: 0.5rem;
-            margin-top: 0;
         }
         
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
         
-        .skill {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
         }
         
         .whatsapp-btn {
-            display: inline-block;
-            background: #25D366;
+            display: block;
+            background-color: #25D366;
             color: white;
+            text-align: center;
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 1.5rem;
             transition: transform 0.2s;
         }
         
         .whatsapp-btn:hover {
             transform: translateY(-2px);
+            background-color: #128C7E;
+        }
+        
+        .rules-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .rules-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .rule-number {
+            background-color: var(--primary);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .important-note {
+            background-color: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin: 1.5rem 0;
         }
         
         footer {
@@ -104,71 +133,110 @@
             padding: 1rem;
             color: #64748b;
         }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <!-- Ganti dengan foto Anda -->
-            <img src="profile.jpg" alt="Wilkazxq" class="profile-img">
-            <h1>Wilkazxq</h1>
-            <p>Developer & Creator</p>
+            <h1>PENDAFTARAN OWNER GRUP</h1>
+            <p>Formulir Pendaftaran Seller</p>
         </header>
         
-        <div class="contact-info">
-            <p><strong>Telepon:</strong> +62 813-7165-2027</p>
-            <p><strong>Email:</strong> wilkadev@gmail.com</p>
-            <p><strong>Website:</strong> wilkazxq.dev</p>
-            <a href="https://wa.me/6281371652027" class="whatsapp-btn">Gabung WhatsApp</a>
-        </div>
-        
-        <div class="section">
-            <h2>Profesi Saya</h2>
-            <ul>
-                <li>Android App Developer</li>
-                <li>Web Designer</li>
-                <li>Digital Produk Creator</li>
-                <li>UI/UX Enthusiast</li>
-                <li>Teknisi HP & Jaringan</li>
+        <div class="card">
+            <h2>Peraturan Grup</h2>
+            <ul class="rules-list">
+                <li>
+                    <div class="rule-number">1</div>
+                    <div>Seller wajib memiliki barang ready stock untuk dijual</div>
+                </li>
+                <li>
+                    <div class="rule-number">2</div>
+                    <div>Dilarang melakukan spam promosi di grup</div>
+                </li>
+                <li>
+                    <div class="rule-number">3</div>
+                    <div>Wajib memberikan harga terbaik untuk member grup</div>
+                </li>
+                <li>
+                    <div class="rule-number">4</div>
+                    <div>Dilarang menipu pembeli dengan alasan apapun</div>
+                </li>
+                <li>
+                    <div class="rule-number">5</div>
+                    <div>Seller yang melanggar akan dikeluarkan dari grup</div>
+                </li>
             </ul>
-        </div>
-        
-        <div class="section">
-            <h2>Keahlian</h2>
-            <div class="skills">
-                <span class="skill">Android Development</span>
-                <span class="skill">Web Design</span>
-                <span class="skill">UI/UX</span>
-                <span class="skill">Kotlin</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">HTML/CSS</span>
-                <span class="skill">Network Troubleshooting</span>
+            
+            <div class="important-note">
+                <strong>PERHATIAN:</strong> Pastikan Anda membaca dan menyetujui semua peraturan di atas sebelum mendaftar.
             </div>
         </div>
         
-        <div class="section">
-            <h2>Proyek Terbaru</h2>
-            <p>Beberapa proyek yang sedang saya kerjakan:</p>
-            <!-- Tambahkan proyek Anda di sini -->
-            <p>Coming soon...</p>
-        </div>
-        
-        <div class="section">
-            <h2>Musik Saya</h2>
-            <!-- Tambahkan embed musik atau player -->
-            <p>0:07 / 0:17</p>
-            <p>[Player musik akan ditampilkan di sini]</p>
+        <div class="card">
+            <h2>Data Diri</h2>
+            <div class="form-group">
+                <label for="fullName">Nama Lengkap</label>
+                <input type="text" id="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Nomor WhatsApp</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="product">Jenis Produk yang Dijual</label>
+                <input type="text" id="product" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="experience">Pengalaman Berjualan</label>
+                <select id="experience" required>
+                    <option value="">Pilih pengalaman</option>
+                    <option value="newbie">Pemula (0-6 bulan)</option>
+                    <option value="intermediate">Menengah (6 bulan - 2 tahun)</option>
+                    <option value="expert">Expert (>2 tahun)</option>
+                </select>
+            </div>
+            
+            <a href="#" id="registerBtn" class="whatsapp-btn">MELAMAR SEBAGAI OWNER</a>
         </div>
         
         <footer>
-            <p>&copy; 2023 Wilkazxq. All rights reserved.</p>
+            <p>&copy; 2023 Pendaftaran Owner Grup. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        document.getElementById('registerBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Ambil data dari form
+            const fullName = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            const experience = document.getElementById('experience').value;
+            
+            // Validasi form
+            if (!fullName || !phone || !product || !experience) {
+                alert('Harap isi semua data terlebih dahulu!');
+                return;
+            }
+            
+            // Buat pesan WhatsApp
+            const message = `Halo, saya ingin mendaftar sebagai seller:\n\n` +
+                            `Nama: ${fullName}\n` +
+                            `No. WA: ${phone}\n` +
+                            `Produk: ${product}\n` +
+                            `Pengalaman: ${document.getElementById('experience').options[document.getElementById('experience').selectedIndex].text}\n\n` +
+                            `Saya telah membaca dan menyetujui semua peraturan grup.`;
+            
+            // Encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Redirect ke WhatsApp
+            window.location.href = `https://wa.me/6282293786539?text=${encodedMessage}`;
+        });
+    </script>
 </body>
 </html>
