@@ -4,7 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portofolio Wilkazxq</title>
+  <link rel="manifest" href="manifest.json">
   <style>
+    /* === Loading Screen === */
+    #loadingScreen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      z-index: 9999;
+    }
+
+    /* === Tambahan sebelumnya & umum === */
     :root {
       --bg-color-light: #e0f7f9;
       --container-bg-light: #b3e5fc;
@@ -46,7 +61,6 @@
       border-radius: 12px;
       border: 2px solid var(--border-color-light);
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     body.dark-mode .container {
@@ -55,26 +69,11 @@
       box-shadow: 0 4px 15px rgba(187, 134, 252, 0.5);
     }
 
-    h1 {
-      text-align: center;
+    h1, .highlight {
       color: var(--text-color-light);
-      transition: color 0.3s ease;
     }
-
-    body.dark-mode h1 {
+    body.dark-mode h1, body.dark-mode .highlight {
       color: var(--text-color-dark);
-    }
-
-    h2#typing {
-      text-align: center;
-      font-size: 1.5em;
-      margin-top: 20px;
-      color: var(--highlight-color-light);
-      transition: color 0.3s ease;
-    }
-
-    body.dark-mode h2#typing {
-      color: var(--highlight-color-dark);
     }
 
     button {
@@ -87,18 +86,13 @@
       margin-top: 10px;
       font-size: 16px;
       cursor: pointer;
-      text-align: left;
-      transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: var(--button-bg-hover-light);
     }
-
     body.dark-mode button {
       background-color: var(--button-bg-dark);
     }
-
     body.dark-mode button:hover {
       background-color: var(--button-bg-hover-dark);
     }
@@ -110,7 +104,6 @@
       padding: 10px 15px;
       border-radius: 6px;
       border-left: 4px solid var(--border-color-light);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     body.dark-mode .content {
@@ -118,46 +111,10 @@
       border-left-color: var(--border-color-dark);
     }
 
-    .highlight {
-      color: var(--highlight-color-light);
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    body.dark-mode .highlight {
-      color: var(--highlight-color-dark);
-    }
-
-    .audio-player {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    #audio {
-      display: none;
-    }
-
-    #playBtn {
-      background-color: var(--button-bg-light);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    #playBtn:hover {
-      background-color: var(--button-bg-hover-light);
-    }
-
-    body.dark-mode #playBtn {
-      background-color: var(--button-bg-dark);
-    }
-
-    body.dark-mode #playBtn:hover {
-      background-color: var(--button-bg-hover-dark);
+    .audio-player { margin-top: 20px; text-align: center; }
+    #audio { display: none; }
+    #playBtn, #darkModeToggle {
+      width: auto; text-align: center;
     }
 
     #visualizer {
@@ -166,41 +123,33 @@
       margin-top: 10px;
       background: var(--container-bg-light);
       border-radius: 8px;
-      transition: background-color 0.3s ease;
     }
 
     body.dark-mode #visualizer {
       background: var(--container-bg-dark);
     }
 
-    #darkModeToggle {
-      width: auto;
-      text-align: center;
-      margin-bottom: 15px;
-      background-color: var(--button-bg-light);
-      transition: background-color 0.3s ease;
-    }
-
-    #darkModeToggle:hover {
-      background-color: var(--button-bg-hover-light);
-    }
-
-    body.dark-mode #darkModeToggle {
-      background-color: var(--button-bg-dark);
-    }
-
-    body.dark-mode #darkModeToggle:hover {
-      background-color: var(--button-bg-hover-dark);
+    .info-widgets {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
+  <!-- Loading -->
+  <div id="loadingScreen">Memuat portofolio...</div>
 
-  <div class="container">
+  <!-- Konten -->
+  <div class="container" style="display:none;">
     <button id="darkModeToggle" onclick="toggleDarkMode()">🌙🌑</button>
-
     <h1>Portofolio Wilkazxq</h1>
-    <h2 id="typing"></h2>
+
+    <div class="info-widgets">
+      <div id="btcPrice">BTC: Loading...</div>
+      <div id="localTime">Waktu: --:--</div>
+    </div>
 
     <button onclick="toggleContent('tentang')">Tentang Saya</button>
     <div id="tentang" class="content">
@@ -209,22 +158,17 @@
 
     <button onclick="toggleContent('pengalaman')">Pengalaman</button>
     <div id="pengalaman" class="content">
-      <p>- Membuat aplikasi <span class="highlight">YoonStore</span><br>
-         - Proyek Web & Android, UI/UX Design</p>
+      <p>- Membuat aplikasi <span class="highlight">YoonStore</span><br>- Proyek Web & Android, UI/UX Design</p>
     </div>
 
     <button onclick="toggleContent('skill')">Skill</button>
     <div id="skill" class="content">
-      <p>- HTML, CSS, JavaScript<br>
-         - Firebase, WebView, Android<br>
-         - UI/UX, n8n Automation</p>
+      <p>- HTML, CSS, JavaScript<br>- Firebase, WebView, Android<br>- UI/UX, n8n Automation</p>
     </div>
 
     <button onclick="toggleContent('kontak')">Kontak</button>
     <div id="kontak" class="content">
-      <p>Email: wilkadev@gmail.com<br>
-         WhatsApp: +62 822-9378-6539<br>
-         Web: www.wilkazxq.dev</p>
+      <p>Email: wilkadev@gmail.com<br>WhatsApp: +62 822-9378-6539<br>Web: www.wilkazxq.dev</p>
     </div>
 
     <div class="audio-player">
@@ -237,14 +181,48 @@
   </div>
 
   <script>
+    // Loading screen
+    window.addEventListener("load", () => {
+      document.getElementById("loadingScreen").style.display = "none";
+      document.querySelector(".container").style.display = "block";
+    });
+
     function toggleContent(id) {
-      const element = document.getElementById(id);
-      element.style.display = element.style.display === "block" ? "none" : "block";
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
 
+    // Audio & Visualizer
     const audio = document.getElementById('audio');
     const playBtn = document.getElementById('playBtn');
     let isPlaying = false;
+    const canvas = document.getElementById('visualizer');
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+    const analyser = audioCtx.createAnalyser();
+    const source = audioCtx.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 64;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    function draw() {
+      requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const barWidth = canvas.width / bufferLength;
+      for (let i = 0; i < bufferLength; i++) {
+        const barHeight = dataArray[i] / 1.5;
+        ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#bb86fc' : '#0288d1';
+        ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
+      }
+    }
+    draw();
 
     function toggleAudio() {
       if (!isPlaying) {
@@ -258,61 +236,41 @@
       isPlaying = !isPlaying;
     }
 
-    const canvas = document.getElementById('visualizer');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
-    const analyser = audioCtx.createAnalyser();
-    const source = audioCtx.createMediaElementSource(audio);
-
-    source.connect(analyser);
-    analyser.connect(audioCtx.destination);
-
-    analyser.fftSize = 64;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    function draw() {
-      requestAnimationFrame(draw);
-      analyser.getByteFrequencyData(dataArray);
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const barWidth = (canvas.width / bufferLength);
-      for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i] / 1.5;
-        ctx.fillStyle = 'var(--button-bg-light)';
-        if(document.body.classList.contains('dark-mode')) {
-          ctx.fillStyle = 'var(--button-bg-dark)';
-        }
-        ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
-      }
-    }
-    draw();
-
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
 
-    // Typing Animation
-    const teks = "Halo, saya Wilkazxq - Developer & Digital Creator.";
-    let i = 0;
-    function typeEffect() {
-      if (i < teks.length) {
-        document.getElementById("typing").innerHTML += teks.charAt(i);
-        i++;
-        setTimeout(typeEffect, 50);
+    // Bitcoin Price
+    async function updateBTC() {
+      try {
+        const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/IDR.json');
+        const data = await res.json();
+        const rate = Math.round(data.bpi.IDR.rate_float).toLocaleString('id-ID');
+        document.getElementById('btcPrice').textContent = `BTC: Rp ${rate}`;
+      } catch (e) {
+        document.getElementById('btcPrice').textContent = 'BTC: Error';
       }
     }
-    window.onload = typeEffect;
+    updateBTC();
+    setInterval(updateBTC, 30000);
+
+    // Local Time
+    function updateTime() {
+      const now = new Date();
+      document.getElementById('localTime').textContent =
+        'Waktu: ' + now.toLocaleTimeString('id-ID');
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
   </script>
 
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(() => {
+        console.log("Service Worker Registered");
+      });
+    }
+  </script>
 </body>
 </html>
