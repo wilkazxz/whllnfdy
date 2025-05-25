@@ -31,28 +31,30 @@
         .container {
             max-width: 500px;
             width: 100%;
+            padding: 0 10px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         h1 {
             color: var(--soft-primary);
             margin-bottom: 10px;
             font-weight: 600;
+            font-size: 24px;
         }
 
         .price-tag {
             background-color: var(--soft-price);
             color: white;
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 15px;
+            font-size: 16px;
             box-shadow: 0 4px 10px rgba(255, 158, 125, 0.3);
         }
 
@@ -60,8 +62,8 @@
             background-color: var(--soft-primary);
             color: white;
             border: none;
-            padding: 16px;
-            font-size: 17px;
+            padding: 14px;
+            font-size: 16px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 500;
@@ -71,8 +73,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin: 25px 0;
+            gap: 8px;
+            margin: 20px 0;
         }
 
         .main-btn:hover {
@@ -83,32 +85,32 @@
         .form-container {
             display: none;
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
-            margin: 20px 0;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            margin: 15px 0;
             border: 1px solid rgba(0,0,0,0.05);
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 1px solid #E0E0E0;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             background-color: #FCFCFC;
         }
 
@@ -116,9 +118,9 @@
             background-color: var(--soft-whatsapp);
             color: white;
             border: none;
-            padding: 14px;
+            padding: 12px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             width: 100%;
             margin-top: 10px;
@@ -126,25 +128,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .rules {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.05);
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .rules h2 {
             color: var(--soft-primary);
             margin-top: 0;
-            font-size: 20px;
+            font-size: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .rules ul {
@@ -153,18 +155,19 @@
         }
 
         .rules li {
-            margin-bottom: 12px;
-            padding-left: 28px;
+            margin-bottom: 10px;
+            padding-left: 24px;
             position: relative;
+            font-size: 14px;
         }
 
         .rules li:before {
             content: "•";
             color: var(--soft-accent);
-            font-size: 24px;
+            font-size: 20px;
             position: absolute;
-            left: 5px;
-            top: -5px;
+            left: 0;
+            top: -4px;
         }
 
         .prohibited {
@@ -174,14 +177,48 @@
             padding: 2px 6px;
             border-radius: 4px;
             display: inline-block;
-            margin: 5px 0;
+            font-size: 13px;
         }
 
         .price-info {
             text-align: center;
-            margin: 15px 0;
-            font-size: 14px;
+            margin: 12px 0;
+            font-size: 13px;
             color: #777;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 22px;
+            }
+            .price-tag {
+                font-size: 15px;
+                padding: 6px 14px;
+            }
+            .main-btn {
+                font-size: 15px;
+                padding: 13px;
+            }
+            .form-group label {
+                font-size: 13px;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 13px;
+                padding: 9px 10px;
+            }
+            .submit-btn {
+                font-size: 14px;
+                padding: 11px;
+            }
+            .rules h2 {
+                font-size: 16px;
+            }
+            .rules li {
+                font-size: 13px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;500;600&display=swap" rel="stylesheet">
@@ -216,41 +253,41 @@
 
             <div class="form-group">
                 <label for="product"><i class="fas fa-shopping-bag"></i> Jenis Produk</label>
-                <input type="text" id="product" placeholder="Contoh: Fashion, Elektronik" required>
+                <input type="text" id="product" placeholder="Contoh: Fashion, Skincare" required>
             </div>
 
             <div class="form-group">
                 <label for="experience"><i class="fas fa-briefcase"></i> Pengalaman Berjualan</label>
                 <select id="experience" required>
                     <option value="">-- Pilih Pengalaman --</option>
-                    <option value="pemula">Pemula (belum pernah jualan online)</option>
-                    <option value="sedikit">Sedikit (pernah jualan tapi belum serius)</option>
-                    <option value="cukup">Cukup (sudah berpengalaman jualan online)</option>
-                    <option value="banyak">Banyak (sudah sukses jualan online sebelumnya)</option>
+                    <option value="pemula">Pemula</option>
+                    <option value="sedikit">Sedikit</option>
+                    <option value="cukup">Cukup</option>
+                    <option value="banyak">Banyak</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="previousProducts"><i class="fas fa-box-open"></i> Produk yang Pernah Dijual</label>
-                <input type="text" id="previousProducts" placeholder="Contoh: Baju, Aksesoris, Skincare">
+                <label for="previousProducts"><i class="fas fa-box-open"></i> Produk Sebelumnya</label>
+                <input type="text" id="previousProducts" placeholder="Contoh: Baju, Aksesoris">
             </div>
 
             <div class="form-group">
-                <label for="story"><i class="fas fa-edit"></i> Ceritakan Pengalaman Jualan Anda</label>
-                <textarea id="story" rows="4" placeholder="Silakan ceritakan sedikit tentang pengalaman berjualan Anda..."></textarea>
+                <label for="story"><i class="fas fa-edit"></i> Cerita Singkat</label>
+                <textarea id="story" rows="3" placeholder="Pernah jual produk..."></textarea>
             </div>
 
             <div class="form-group">
                 <label>
                     <input type="checkbox" id="agreeRules" required>
-                    Saya telah membaca dan menyetujui semua ketentuan grup
+                    Saya setuju dengan ketentuan grup
                 </label>
             </div>
 
             <input type="hidden" id="package" value="basic">
 
             <button id="submitBtn" class="submit-btn">
-                <i class="fab fa-whatsapp"></i> Lanjut Pembayaran
+                <i class="fab fa-whatsapp"></i> Lanjut ke WA
             </button>
         </div>
 
@@ -260,11 +297,10 @@
                 <li>Biaya pendaftaran <strong>Rp25.000</strong> (sekali bayar)</li>
                 <li>Pembayaran via transfer bank/DANA/OVO</li>
                 <li>Barang harus ready stock dan asli</li>
-                <li>Promosi sesuai waktu yang ditentukan</li>
                 <li><span class="prohibited">TIDAK BOLEH MENJUAL PANEL BOT</span></li>
                 <li>Dilarang menjual produk ilegal</li>
-                <li>Komunikasi dengan pembeli harus sopan</li>
-                <li>Admin berhak mengeluarkan seller yang melanggar</li>
+                <li>Komunikasi sopan dan profesional</li>
+                <li>Admin berhak mengeluarkan pelanggar</li>
             </ul>
         </div>
     </div>
@@ -279,7 +315,7 @@
             formContainer.style.display = isShowing ? 'none' : 'block';
             showFormBtn.innerHTML = isShowing
                 ? '<i class="fas fa-cart-plus"></i> Daftar Sekarang'
-                : '<i class="fas fa-times"></i> Tutup Formulir';
+                : '<i class="fas fa-times"></i> Tutup Form';
 
             if (!isShowing) {
                 formContainer.scrollIntoView({ behavior: 'smooth' });
@@ -295,7 +331,7 @@
             const story = document.getElementById('story').value.trim();
 
             if (!name || !phone || !product || !experience) {
-                alert('Harap lengkapi semua data wajib terlebih dahulu.');
+                alert('Harap lengkapi semua data wajib.');
                 return;
             }
 
