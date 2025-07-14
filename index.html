@@ -1,362 +1,820 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Reseller - Rp25.000</title>
-    <style>
-        :root {
-            --soft-primary: #7C9ACF;
-            --soft-secondary: #A8D8EA;
-            --soft-accent: #F5CEC7;
-            --soft-text: #5A5A5A;
-            --soft-bg: #F9F7F7;
-            --soft-whatsapp: #77D7B9;
-            --soft-price: #FF9E7D;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WILKA | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --dark-bg: #1a1c3a;
+      --darker-bg: #14152e;
+      --vibrant-blue: #4a6cf7;
+      --light-blue: #5e87ff;
+      --light-green: #2ed573;
+      --light-gray: #f0f4f8;
+      --text-light: #ffffff;
+      --text-gray: #a0a5c1;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--soft-bg);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: var(--soft-text);
-            line-height: 1.6;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 500px;
-            width: 100%;
-            padding: 0 10px;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+      color: var(--text-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(74, 108, 247, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(46, 213, 115, 0.1) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        h1 {
-            color: var(--soft-primary);
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: 24px;
-        }
+    /* ==== INTRO SCREEN ==== */
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .price-tag {
-            background-color: var(--soft-price);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-size: 16px;
-            box-shadow: 0 4px 10px rgba(255, 158, 125, 0.3);
-        }
+    #intro svg {
+      animation: rotateIcon 4s linear infinite;
+      stroke: var(--vibrant-blue);
+    }
 
-        .main-btn {
-            background-color: var(--soft-primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(124, 154, 207, 0.2);
-            transition: all 0.3s;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 20px 0;
-        }
+    @keyframes rotateIcon {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        .main-btn:hover {
-            transform: translateY(-3px);
-            background-color: #6B8BC8;
-        }
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
 
-        .form-container {
-            display: none;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-            margin: 15px 0;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+    #intro h1, #intro p {
+      opacity: 0;
+      animation: fadeInText 1s forwards;
+    }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+    #intro h1 { 
+      animation-delay: 0.5s; 
+      font-size: 2.8rem;
+      margin: 20px 0 10px;
+      background: linear-gradient(to right, var(--light-blue), var(--light-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    #intro p { 
+      animation-delay: 1s; 
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: var(--text-gray);
+    }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 500;
-            font-size: 14px;
-        }
+    /* ==== MAIN LAYOUT ==== */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: transparent;
+    }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            font-size: 14px;
-            background-color: #FCFCFC;
-        }
+    header {
+      position: relative;
+      overflow: hidden;
+      background: var(--card-bg);
+      color: var(--text-light);
+      padding: 80px 20px 50px;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      z-index: 10;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(74, 108, 247, 0.3);
+    }
 
-        .submit-btn {
-            background-color: var(--soft-whatsapp);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
+    header h1 {
+        font-size: 3.2rem;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        background: linear-gradient(to right, var(--light-blue), var(--light-green));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 
-        .rules {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.05);
-            margin-top: 15px;
-        }
+    header p {
+        font-size: 1.3rem;
+        opacity: 0.85;
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--text-gray);
+    }
 
-        .rules h2 {
-            color: var(--soft-primary);
-            margin-top: 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    canvas#heartbeatVisualizer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+    }
 
-        .rules ul {
-            padding-left: 5px;
-            list-style: none;
-        }
+    .main-content-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        padding: 0 20px;
+        gap: 30px;
+    }
 
-        .rules li {
-            margin-bottom: 10px;
-            padding-left: 24px;
-            position: relative;
-            font-size: 14px;
-        }
+    nav {
+      background: var(--card-bg);
+      padding: 18px 25px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      border-radius: var(--border-radius);
+      margin: -50px auto 0;
+      position: sticky;
+      top: 20px;
+      z-index: 50;
+      max-width: calc(100% - 40px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(74, 108, 247, 0.2);
+    }
 
-        .rules li:before {
-            content: "•";
-            color: var(--soft-accent);
-            font-size: 20px;
-            position: absolute;
-            left: 0;
-            top: -4px;
-        }
+    nav a {
+      text-decoration: none;
+      background: var(--vibrant-blue);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      transition: var(--transition);
+      font-size: 1rem;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
 
-        .prohibited {
-            color: #FF6B6B;
-            font-weight: 600;
-            background-color: #FFF2F2;
-            padding: 2px 6px;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 13px;
-        }
+    nav a:hover, nav a.active-nav {
+      background: var(--light-green);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(46, 213, 115, 0.3);
+    }
 
-        .price-info {
-            text-align: center;
-            margin: 12px 0;
-            font-size: 13px;
-            color: #777;
-        }
+    section {
+      padding: 35px;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      margin-bottom: 30px;
+      display: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(74, 108, 247, 0.2);
+    }
 
-        /* Responsive Styles */
-        @media (max-width: 500px) {
-            h1 {
-                font-size: 22px;
-            }
-            .price-tag {
-                font-size: 15px;
-                padding: 6px 14px;
-            }
-            .main-btn {
-                font-size: 15px;
-                padding: 13px;
-            }
-            .form-group label {
-                font-size: 13px;
-            }
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 13px;
-                padding: 9px 10px;
-            }
-            .submit-btn {
-                font-size: 14px;
-                padding: 11px;
-            }
-            .rules h2 {
-                font-size: 16px;
-            }
-            .rules li {
-                font-size: 13px;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
+    section.active { display: block; }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 2.4rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--vibrant-blue);
+      font-weight: 700;
+    }
+
+    .card {
+      background: rgba(26, 28, 58, 0.4);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      margin-bottom: 25px;
+      transition: var(--transition);
+      border: 1px solid rgba(74, 108, 247, 0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border-color: var(--vibrant-blue);
+    }
+
+    .skill-bar {
+      margin: 20px 0;
+    }
+
+    .skill-bar span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .skill-bar-fill {
+      height: 16px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--vibrant-blue), var(--light-green));
+      transition: width 0.8s ease;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: var(--darker-bg);
+      font-size: 1rem;
+      color: var(--text-gray);
+      margin-top: 50px;
+      border-radius: 40px 40px 0 0;
+    }
+
+    #musicControl {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--vibrant-blue);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      font-size: 1.6rem;
+      z-index: 100;
+      box-shadow: 0 5px 20px rgba(74, 108, 247, 0.4);
+    }
+
+    #musicControl:hover {
+      transform: scale(1.1) rotate(10deg);
+      background: var(--light-green);
+      box-shadow: 0 8px 25px rgba(46, 213, 115, 0.4);
+    }
+
+    /* Tool Styles */
+    .tool-container {
+      background: rgba(26, 28, 58, 0.6);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      margin-top: 30px;
+      border: 1px solid rgba(74, 108, 247, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tool-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--vibrant-blue), var(--light-green));
+    }
+    
+    .tool-container h3 {
+      color: var(--text-light);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    
+    .tool-form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .tool-form input,
+    .tool-form textarea {
+      padding: 16px 20px;
+      border: 2px solid rgba(74, 108, 247, 0.3);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      width: 100%;
+      font-family: inherit;
+      background: rgba(26, 28, 58, 0.4);
+      color: var(--text-light);
+    }
+    
+    .tool-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .tool-form input::placeholder,
+    .tool-form textarea::placeholder {
+      color: var(--text-gray);
+    }
+    
+    .tool-form input:focus,
+    .tool-form textarea:focus {
+      border-color: var(--vibrant-blue);
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .button-group button {
+      flex: 1;
+      min-width: 140px;
+      padding: 16px 25px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+    }
+    
+    button {
+      background: linear-gradient(135deg, var(--vibrant-blue), var(--light-blue));
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(74, 108, 247, 0.4);
+    }
+    
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(74, 108, 247, 0.6);
+    }
+    
+    button.secondary {
+      background: transparent;
+      color: var(--text-light);
+      border: 2px solid var(--vibrant-blue);
+      box-shadow: none;
+    }
+
+    button.secondary:hover {
+        background: rgba(74, 108, 247, 0.1);
+        box-shadow: 0 4px 15px rgba(74, 108, 247, 0.2);
+    }
+    
+    button.success {
+      background: linear-gradient(135deg, var(--light-green), #27ae60);
+    }
+    
+    .result-container {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      background: rgba(26, 28, 58, 0.6);
+      border-left: 5px solid var(--vibrant-blue);
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .result-container h4 {
+      margin-bottom: 20px;
+      color: var(--text-light);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .protection-steps {
+      margin-top: 25px;
+    }
+    
+    .protection-step {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+      font-size: 1.05rem;
+      padding: 15px;
+      border-radius: 10px;
+      background: rgba(74, 108, 247, 0.1);
+      transition: var(--transition);
+    }
+
+    .protection-step:hover {
+      background: rgba(74, 108, 247, 0.2);
+      transform: translateX(5px);
+    }
+    
+    .step-number {
+      background: var(--vibrant-blue);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 30px 0;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(74, 108, 247, 0.2);
+      border-top: 5px solid var(--vibrant-blue);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 30, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      backdrop-filter: blur(5px);
+    }
+
+    .popup-content {
+      background: var(--dark-bg);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      text-align: center;
+      position: relative;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(74, 108, 247, 0.3);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-content h3 {
+      margin-bottom: 30px;
+      color: var(--text-light);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .popup-content input {
+      width: 100%;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border: 2px solid rgba(74, 108, 247, 0.3);
+      border-radius: 12px;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      background: rgba(26, 28, 58, 0.4);
+      color: var(--text-light);
+    }
+
+    .popup-content input::placeholder {
+      color: var(--text-gray);
+    }
+
+    .popup-content input:focus {
+      border-color: var(--vibrant-blue);
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.15);
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      justify-content: center;
+    }
+
+    .popup-buttons button {
+        min-width: 140px;
+        padding: 16px 25px;
+        font-size: 1.1rem;
+    }
+
+    .price-list {
+      margin-bottom: 25px;
+      background: rgba(26, 28, 58, 0.4);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      border: 1px solid rgba(74, 108, 247, 0.3);
+    }
+
+    .price-title {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-light);
+      font-size: 1.2rem;
+    }
+
+    .gb-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 25px;
+      justify-content: center;
+    }
+
+    .gb-option {
+      background: rgba(26, 28, 58, 0.4);
+      padding: 12px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid rgba(74, 108, 247, 0.3);
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .gb-option:hover {
+      background: rgba(74, 108, 247, 0.2);
+      border-color: var(--vibrant-blue);
+    }
+
+    .gb-option.active {
+      background: var(--vibrant-blue);
+      color: white;
+      border-color: var(--vibrant-blue);
+      transform: translateY(-3px);
+    }
+    
+    .token-input-container {
+      margin-bottom: 25px;
+    }
+    
+    .token-error {
+      color: #ff6b6b;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      nav {
+        gap: 12px;
+        padding: 15px 20px;
+        margin-top: -40px;
+      }
+      
+      nav a {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+      }
+      
+      .main-content-wrapper {
+        margin: 0 auto 20px;
+        padding: 0 15px;
+        gap: 20px;
+      }
+
+      section {
+        padding: 25px;
+        margin-bottom: 20px;
+      }
+      
+      .card {
+        padding: 25px;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .button-group button {
+        width: 100%;
+      }
+
+      header {
+          padding: 60px 15px 40px;
+      }
+
+      header h1 {
+          font-size: 2.5rem;
+      }
+
+      header p {
+          font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+      }
+
+      .popup-content {
+          padding: 30px;
+      }
+
+      .popup-content h3 {
+          font-size: 1.6rem;
+      }
+      
+      #intro h1 {
+        font-size: 2.2rem;
+      }
+      
+      #intro p {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      nav {
+        gap: 10px;
+        padding: 12px 15px;
+      }
+      
+      nav a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .popup-content {
+        padding: 25px 20px;
+      }
+      
+      .popup-content h3 {
+        font-size: 1.4rem;
+      }
+      
+      #intro h1 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* Floating elements animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Pendaftaran Reseller</h1>
-            <div class="price-tag">Hanya Rp25.000</div>
-            <p>Bergabunglah sebagai reseller kami dan mulai berjualan hari ini!</p>
-        </div>
 
-        <div class="price-info">
-            <i class="fas fa-info-circle"></i> Biaya pendaftaran sekali untuk selamanya
-        </div>
+<div id="intro">
+  <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M12 2l4 4-4 4-4-4 4-4zM2 12l4-4 4 4-4 4-4-4zM12 22l-4-4 4-4 4 4-4 4zM22 12l-4 4-4-4 4-4 4 4z"/>
+  </svg>
+  <h1>Selamat Datang di Portofolio Wilkazxq</h1>
+  <p>Developer | Designer | Creator - Membangun solusi digital dengan kreativitas dan inovasi</p>
+  <button onclick="masukWebsite()" style="margin-top:30px;background:linear-gradient(135deg, var(--vibrant-blue), var(--light-blue));border:none;color:white;padding:16px 40px;border-radius:50px;font-size:1.2rem;cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;font-weight:600;box-shadow:0 6px 20px rgba(74, 108, 247, 0.4);display:flex;align-items:center;gap:12px;">
+    <svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Mulai Pengalaman
+  </button>
+</div>
 
-        <button id="showFormBtn" class="main-btn">
-            <i class="fas fa-cart-plus"></i> Daftar Sekarang
-        </button>
+<div class="app-container">
+    <header>
+      <canvas id="heartbeatVisualizer"></canvas>
+      <h1>WILKA</h1>
+      <p>Portofolio Kreatif & Solusi Digital</p>
+    </header>
 
-        <div id="formContainer" class="form-container">
-            <div class="form-group">
-                <label for="name"><i class="fas fa-user"></i> Nama Lengkap</label>
-                <input type="text" id="name" placeholder="Nama Anda" required>
+    <div class="main-content-wrapper">
+        <nav>
+          <a href="#skills" onclick="toggleSection('skills')"><i class="fas fa-cog"></i> Skills</a>
+          <a href="#hobbies" onclick="toggleSection('hobbies')"><i class="fas fa-gamepad"></i> Hobi</a>
+          <a href="#contact" onclick="toggleSection('contact')"><i class="fas fa-envelope"></i> Kontak</a>
+          <a href="#antiDDoS" onclick="toggleSection('antiDDoS')"><i class="fas fa-shield-alt"></i> Anti-DDoS</a>
+          <a href="#base64" onclick="toggleSection('base64')"><i class="fas fa-lock"></i> Base64 Tool</a>
+          <a href="#group" onclick="window.open('https://chat.whatsapp.com/CtzrdM40BIH7hxYGNogr89','_blank')"><i class="fas fa-users"></i> Grup Developer</a>
+          <a href="#" onclick="showTokenPopup()"><i class="fas fa-shopping-cart"></i> Beli Panel</a>
+        </nav>
+
+        <section id="skills">
+          <h2><i class="fas fa-cog"></i> Skills</h2>
+          <div class="card">
+            <div class="skill-bar">
+              <span>HTML — 90%</span>
+              <div class="skill-bar-fill" style="width:90%"></div>
             </div>
-
-            <div class="form-group">
-                <label for="phone"><i class="fas fa-phone-alt"></i> Nomor WhatsApp</label>
-                <input type="tel" id="phone" placeholder="628123456789" required>
+            <div class="skill-bar">
+              <span>CSS — 85%</span>
+              <div class="skill-bar-fill" style="width:85%"></div>
             </div>
-
-            <div class="form-group">
-                <label for="product"><i class="fas fa-shopping-bag"></i> Jenis Produk</label>
-                <input type="text" id="product" placeholder="Contoh: Fashion, Skincare" required>
-            </div>
-
-            <div class="form-group">
-                <label for="experience"><i class="fas fa-briefcase"></i> Pengalaman Berjualan</label>
-                <select id="experience" required>
-                    <option value="">-- Pilih Pengalaman --</option>
-                    <option value="pemula">Pemula</option>
-                    <option value="sedikit">Sedikit</option>
-                    <option value="cukup">Cukup</option>
-                    <option value="banyak">Banyak</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="previousProducts"><i class="fas fa-box-open"></i> Produk Sebelumnya</label>
-                <input type="text" id="previousProducts" placeholder="Contoh: Baju, Aksesoris">
-            </div>
-
-            <div class="form-group">
-                <label for="story"><i class="fas fa-edit"></i> Cerita Singkat</label>
-                <textarea id="story" rows="3" placeholder="Pernah jual produk..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="agreeRules" required>
-                    Saya setuju dengan ketentuan grup
-                </label>
-            </div>
-
-            <input type="hidden" id="package" value="basic">
-
-            <button id="submitBtn" class="submit-btn">
-                <i class="fab fa-whatsapp"></i> Lanjut ke WA
-            </button>
-        </div>
-
-        <div class="rules">
-            <h2><i class="fas fa-clipboard-check"></i> Ketentuan Grup</h2>
-            <ul>
-                <li>Biaya pendaftaran <strong>Rp25.000</strong> (sekali bayar)</li>
-                <li>Pembayaran via transfer bank/DANA/OVO</li>
-                <li>Barang harus ready stock dan asli</li>
-                <li><span class="prohibited">TIDAK BOLEH MENJUAL PANEL BOT</span></li>
-                <li>Dilarang menjual produk ilegal</li>
-                <li>Komunikasi sopan dan profesional</li>
-                <li>Admin berhak mengeluarkan pelanggar</li>
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        const showFormBtn = document.getElementById('showFormBtn');
-        const formContainer = document.getElementById('formContainer');
-        const submitBtn = document.getElementById('submitBtn');
-
-        showFormBtn.addEventListener('click', function () {
-            const isShowing = formContainer.style.display === 'block';
-            formContainer.style.display = isShowing ? 'none' : 'block';
-            showFormBtn.innerHTML = isShowing
-                ? '<i class="fas fa-cart-plus"></i> Daftar Sekarang'
-                : '<i class="fas fa-times"></i> Tutup Form';
-
-            if (!isShowing) {
-                formContainer.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
-        submitBtn.addEventListener('click', function () {
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const product = document.getElementById('product').value.trim();
-            const experience = document.getElementById('experience').value;
-            const previousProducts = document.getElementById('previousProducts').value.trim();
-            const story = document.getElementById('story').value.trim();
-
-            if (!name || !phone || !product || !experience) {
-                alert('Harap lengkapi semua data wajib.');
-                return;
-            }
-
-            function getExperienceLabel(value) {
-                const labels = {
-                    pemula: 'Pemula',
-                    sedikit: 'Sedikit',
-                    cukup: 'Cukup',
-                    banyak: 'Banyak'
-                };
-                return labels[value] || value;
-            }
-
-            const message = `Halo Admin, saya ingin mendaftar sebagai reseller:\n\n` +
-                `*Nama:* ${name}\n` +
-                `*No. WA:* ${phone}\n` +
-                `*Produk:* ${product}\n` +
-                `*Pengalaman:* ${getExperienceLabel(experience)}\n` +
-                `*Produk Sebelumnya:* ${previousProducts || 'Belum ada'}\n` +
-                `*Cerita Pengalaman:* ${story || 'Tidak tersedia'}\n` +
-                `*Paket:* Basic - Rp25.000 (Sekali Bayar)\n\n` +
-                `Saya telah membaca dan menyetujui semua ketentuan grup termasuk *TIDAK BOLEH MENJUAL PANEL BOT*.`;
-
-            window.location.href = `https://wa.me/6282293786539?text= ${encodeURIComponent(message)}`;
-        });
-    </script>
-</body>
-</html>
+            <div class="skill-bar">
+              <span>JavaScr
