@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffe259, #ffa751); /* tropis */
+      background: linear-gradient(to bottom, #ffe259, #ffa751);
       color: #333;
       text-align: center;
     }
@@ -73,6 +73,13 @@
     .music button:hover {
       background-color: #009f74;
     }
+
+    #clock {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #e07c00;
+    }
   </style>
 </head>
 <body>
@@ -89,6 +96,7 @@
     <div class="calendar">
       <h3>📅 Kalender Hari Ini:</h3>
       <p id="calendar"></p>
+      <div id="clock"></div>
     </div>
 
     <div class="status">
@@ -104,12 +112,21 @@
   </div>
 
   <script>
-    // Kalender Real-Time
+    // Tanggal real-time
     const date = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('calendar').textContent = date.toLocaleDateString('id-ID', options);
 
-    // Audio play/pause
+    // Jam real-time
+    function updateClock() {
+      const now = new Date();
+      const jam = now.toLocaleTimeString('id-ID', { hour12: false });
+      document.getElementById('clock').textContent = "🕒 " + jam;
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Panggil langsung biar muncul tanpa delay
+
+    // Musik Play/Pause
     const audio = document.getElementById('audio');
     function toggleAudio() {
       if (audio.paused) {
