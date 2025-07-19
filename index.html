@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WilkaNfdya</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -14,12 +15,19 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientMove 30s linear infinite;
       color: #fff;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     .container {
@@ -127,17 +135,40 @@
     .music button:hover {
       background: #e94e49;
     }
+
+    .social i {
+      margin-right: 6px;
+    }
+
+    .support {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.06);
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .support h3 {
+      font-size: 1em;
+      margin-bottom: 10px;
+      color: #ffc107;
+    }
+
+    .support img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00000055;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <img src="whll.jpg" alt="Foto Wilka" class="profile-img" />
     <h1>WilkaNfdya</h1>
-    <div class="quote" id="quote">"Berpikir besar, melangkah pasti."</div>
+    <div class="quote">"Berpikir besar, melangkah pasti."</div>
 
     <div class="social">
-      <a href="https://instagram.com/namakamu" target="_blank">Instagram</a>
-      <a href="https://wa.me/6282293786539" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/wilkaxyz" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://wa.me/6282293786539" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
     </div>
 
     <div class="section">
@@ -158,10 +189,15 @@
       <p>🟢 Online</p>
     </div>
 
-    <div class="section">
+    <div class="section music">
       <h3>🎵 Musik Dashboard</h3>
       <audio id="audio" src="music.mp3"></audio>
       <button onclick="toggleAudio()">Play / Pause</button>
+    </div>
+
+    <div class="support">
+      <h3>💖 Dukungan & Support</h3>
+      <img src="qris.jpg" alt="QRIS Dukungan" />
     </div>
   </div>
 
