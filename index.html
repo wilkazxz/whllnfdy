@@ -40,7 +40,7 @@
       color: #555;
     }
 
-    .social {
+    .social, .edu {
       margin-top: 20px;
     }
 
@@ -51,7 +51,7 @@
       font-weight: bold;
     }
 
-    .calendar, .status, .music {
+    .calendar, .status, .music, .edu {
       margin-top: 30px;
       padding: 15px;
       background: #fefefe;
@@ -80,6 +80,20 @@
       margin-top: 10px;
       color: #e07c00;
     }
+
+    .edu a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #4caf50;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+
+    .edu a:hover {
+      background: #388e3c;
+    }
   </style>
 </head>
 <body>
@@ -90,7 +104,14 @@
 
     <div class="social">
       <a href="https://instagram.com/namakamu" target="_blank">Instagram</a>
-      <a href="https://wa.me/628xxxxxx" target="_blank">WhatsApp</a>
+      <a href="https://wa.me/6282293786539" target="_blank">WhatsApp</a>
+    </div>
+
+    <div class="edu">
+      <h3>🎓 Pendidikan</h3>
+      <p>SMKN 2 Tembilahan</p>
+      <p>Jurusan: Teknik Komputer dan Jaringan</p>
+      <a href="https://g.co/kgs/gc9Pdi7" target="_blank">🌐 Kunjungi Sekolah</a>
     </div>
 
     <div class="calendar">
@@ -112,7 +133,7 @@
   </div>
 
   <script>
-    // Tanggal real-time
+    // Kalender real-time
     const date = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('calendar').textContent = date.toLocaleDateString('id-ID', options);
@@ -124,7 +145,7 @@
       document.getElementById('clock').textContent = "🕒 " + jam;
     }
     setInterval(updateClock, 1000);
-    updateClock(); // Panggil langsung biar muncul tanpa delay
+    updateClock();
 
     // Musik Play/Pause
     const audio = document.getElementById('audio');
