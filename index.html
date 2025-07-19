@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WilkaNfdya</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe259, #ffa751); /* tropis */
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 3px solid #00bfff;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2em;
+    }
+
+    p {
+      font-style: italic;
+      color: #555;
+    }
+
+    .social {
+      margin-top: 20px;
+    }
+
+    .social a {
+      color: #0077ff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .calendar, .status, .music {
+      margin-top: 30px;
+      padding: 15px;
+      background: #fefefe;
+      border-radius: 8px;
+      border: 2px dashed #ff9900;
+    }
+
+    .music button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #00c897;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .music button:hover {
+      background-color: #009f74;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="whll.jpg" alt="Foto Wilka" class="profile-img" />
+    <h1>WilkaNfdya</h1>
+    <p>"Berpikir besar, melangkah pasti."</p>
+
+    <div class="social">
+      <a href="https://instagram.com/namakamu" target="_blank">Instagram</a>
+      <a href="https://wa.me/628xxxxxx" target="_blank">WhatsApp</a>
+    </div>
+
+    <div class="calendar">
+      <h3>📅 Kalender Hari Ini:</h3>
+      <p id="calendar"></p>
+    </div>
+
+    <div class="status">
+      <h3>📡 Status Server</h3>
+      <p>🟢 Online</p>
+    </div>
+
+    <div class="music">
+      <h3>🎵 Musik Dashboard</h3>
+      <audio id="audio" src="music.mp3"></audio>
+      <button onclick="toggleAudio()">Play / Pause</button>
+    </div>
+  </div>
+
+  <script>
+    // Kalender Real-Time
+    const date = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('calendar').textContent = date.toLocaleDateString('id-ID', options);
+
+    // Audio play/pause
+    const audio = document.getElementById('audio');
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>
