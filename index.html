@@ -1,529 +1,107 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WILKA | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WHLLNFDY API Docs</title>
   <style>
-    :root {
-      --primary-color: #7a77b8; /* Soft muted purple */
-      --bg-color: #f0f4f8; /* Light grey-blue background */
-      --text-color: #444; /* Dark gray text */
-      --card-bg: #ffffff; /* White cards for contrast */
-      --border-radius: 10px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    #intro {
-      position: fixed;
-      inset: 0;
-      background: #4a6fa5;
-      color: white;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      text-align: center;
+      height: 100vh;
     }
 
-    #intro svg {
-      animation: rotateIcon 4s linear infinite;
+    aside {
+      width: 250px;
+      background-color: #161b22;
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
     }
 
-    @keyframes rotateIcon {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
     }
 
-    @keyframes fadeInText {
-      0% { opacity: 0; transform: translateX(-30px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-
-    #intro h1, #intro p {
-      opacity: 0;
-      animation: fadeInText 1s forwards;
-    }
-
-    #intro h1 { animation-delay: 0.5s; }
-    #intro p { animation-delay: 1s; }
-
-    header {
-      position: relative;
-      overflow: hidden;
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-      border-bottom: 5px solid #6d6a9e;
-      border-radius: 0 0 20px 20px;
-    }
-
-    nav {
-      background-color: #fff;
-      padding: 10px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    h1, h2, h3 {
+      color: #58a6ff;
     }
 
     nav a {
+      color: #c9d1d9;
       text-decoration: none;
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: var(--border-radius);
-      transition: background 0.3s ease, transform 0.2s ease;
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.3rem;
+      border-radius: 5px;
     }
 
     nav a:hover {
-      background-color: #6d6a9e;
-      transform: scale(1.05);
+      background-color: #21262d;
     }
 
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-      display: none;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease-out;
-    }
-
-    section.active { display: block; }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: var(--primary-color);
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .skill-bar {
-      margin: 10px 0;
-    }
-
-    .skill-bar span {
-      display: block;
-      font-weight: bold;
-    }
-
-    .skill-bar-fill {
-      height: 10px;
-      border-radius: 5px;
-      background: #66b3a6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #e6ecf2;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    #musicControl {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #66b3a6;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    canvas#heartbeatVisualizer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 200px;
-      opacity: 0.3;
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-
-    .popup-content {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    }
-
-    .popup-content h3 {
-      margin-bottom: 20px;
-      color: var(--primary-color);
-    }
-
-    .popup-content input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      transition: border 0.3s ease;
-    }
-
-    .popup-content input:focus {
-      border-color: var(--primary-color);
-      outline: none;
-    }
-
-    .popup-content button {
-      background: #66b3a6;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .popup-content button:hover {
-      background: #4d998c;
-    }
-
-    .price-list {
-      margin-bottom: 15px;
-      background: #f8fafc;
-      padding: 15px;
+    pre {
+      background-color: #161b22;
+      padding: 1rem;
       border-radius: 8px;
-      font-size: 0.9rem;
+      overflow-x: auto;
+      position: relative;
     }
 
-    .price-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: var(--primary-color);
-    }
-
-    .gb-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .gb-option {
-      background: #e6f0f7;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: 1px solid #c8d6e5;
-    }
-
-    .gb-option:hover {
-      background: #d0e0ed;
-    }
-
-    .gb-option.active {
-      background: var(--primary-color);
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #238636;
       color: white;
-      border-color: var(--primary-color);
-    }
-    
-    #tokenPopup {
-      display: none;
-    }
-    
-    .token-input-container {
-      margin-bottom: 20px;
-    }
-    
-    .token-error {
-      color: #e74c3c;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      cursor: pointer;
       font-size: 0.8rem;
-      margin-top: 5px;
-      display: none;
+    }
+
+    .copy-btn:hover {
+      background: #2ea043;
     }
   </style>
 </head>
 <body>
 
-<!-- All your existing HTML content remains exactly the same -->
-<div id="intro">
-  <svg width="80" height="80" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-    <path d="M12 2l4 4-4 4-4-4 4-4zM2 12l4-4 4 4-4 4-4-4zM12 22l-4-4 4-4 4 4-4 4zM22 12l-4 4-4-4 4-4 4 4z"/>
-  </svg>
-  <h1 style="margin-top: 20px;">Selamat Datang di Portofolio Wilkazxq</h1>
-  <p>Developer | Designer | Creator</p>
-  <button onclick="masukWebsite()" style="margin-top:30px;background:linear-gradient(135deg,#66b3a6,#4d998c);border:none;color:white;padding:14px 32px;border-radius:50px;font-size:1.1rem;cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;font-weight:bold;box-shadow:0 4px 15px rgba(102,179,166,0.3);display:flex;align-items:center;gap:10px;">
-    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    START
-  </button>
-</div>
+  <aside>
+    <h2>📘 API Docs</h2>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#auth">Auth</a>
+      <a href="#users">Users</a>
+    </nav>
+  </aside>
 
-<header>
-  <canvas id="heartbeatVisualizer"></canvas>
-  <h1>WILKA</h1>
-  <p>Welcome to my portfolio website</p>
-</header>
+  <main>
+    <h1 id="overview">Overview</h1>
+    <p>Selamat datang di WHLLNFDY API. Di sini kamu bisa melihat dokumentasi lengkap.</p>
 
-<nav>
-  <a href="#skills" onclick="toggleSection('skills')">⚙️ Skills</a>
-  <a href="#hobbies" onclick="toggleSection('hobbies')">🎮 Hobbies</a>
-  <a href="#contact" onclick="toggleSection('contact')">✉️ Contact</a>
-  <a href="#group" onclick="window.open('https://chat.whatsapp.com/CtzrdM40BIH7hxYGNogr89','_blank')">👨‍💻 Group Developer</a>
-  <a href="#" onclick="showTokenPopup()">🛒 Buy Panel</a>
-</nav>
+    <h2 id="auth">🔐 Authentication</h2>
+    <p>Gunakan token Authorization:</p>
+    <pre><code id="code1">curl -H "Authorization: Bearer your_token" https://api.whllnfdy.vercel.app/data</code><button class="copy-btn" onclick="copyCode('code1')">Copy</button></pre>
 
-<section id="skills">
-  <h2>⚙️ Skills</h2>
-  <div class="card">
-    <div class="skill-bar"><span>HTML — 90%</span><div class="skill-bar-fill" style="width:90%"></div></div>
-    <div class="skill-bar"><span>CSS — 70%</span><div class="skill-bar-fill" style="width:70%"></div></div>
-    <div class="skill-bar"><span>WhatsApp Bot Development — 80%</span><div class="skill-bar-fill" style="width:80%"></div></div>
-  </div>
-</section>
+    <h2 id="users">👤 Get User</h2>
+    <p>Contoh endpoint untuk mengambil data pengguna:</p>
+    <pre><code id="code2">GET https://api.whllnfdy.vercel.app/v1/users</code><button class="copy-btn" onclick="copyCode('code2')">Copy</button></pre>
+  </main>
 
-<section id="hobbies">
-  <h2>🎮 Hobbies</h2>
-  <div class="card">
-    <p>Saya hobi menganalisis pasar market, politik, inovasi baru seperti AI (Artificial Intelligence), self-improvement, dan lain-lain.</p>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>✉️ Contact</h2>
-  <div class="card">
-    <p>Email: whllzxz@example.com</p>
-    <p>Instagram: @yourinstagram</p>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 WILKA. All rights reserved.
-  <p id="visitorCount">Total Kunjungan: Memuat...</p>
-</footer>
-
-<audio id="backgroundMusic" src="musik.mp3" loop></audio>
-<button id="musicControl" onclick="toggleMusic()">▶️</button>
-
-<!-- Popup Token -->
-<div id="tokenPopup" class="popup" onclick="if(event.target.id==='tokenPopup') hideTokenPopup()">
-  <div class="popup-content">
-    <h3>Masukkan Token Akses</h3>
-    <div class="token-input-container">
-      <input type="password" id="tokenInput" placeholder="Masukkan token NFDYA">
-      <p class="token-error" id="tokenError">Token salah! Silakan coba lagi.</p>
-    </div>
-    <button onclick="verifyToken()">Verifikasi</button>
-  </div>
-</div>
-
-<!-- Popup Buy Panel -->
-<div id="buyPanelPopup" class="popup" onclick="if(event.target.id==='buyPanelPopup') this.style.display='none'">
-  <div class="popup-content">
-    <h3>Buy Panel</h3>
-    <div class="price-list">
-      <p class="price-title">panel size:</p>
-      <div class="gb-options">
-        <div class="gb-option" onclick="selectGbOption(1, '1GB = Rp1.500')">1GB</div>
-        <div class="gb-option" onclick="selectGbOption(2, '2GB = Rp2.500')">2GB</div>
-        <div class="gb-option" onclick="selectGbOption(3, '3GB = Rp3.000')">3GB</div>
-        <div class="gb-option" onclick="selectGbOption(4, '4GB = Rp4.000')">4GB</div>
-        <div class="gb-option" onclick="selectGbOption(5, '5GB = Rp5.500')">5GB</div>
-        <div class="gb-option" onclick="selectGbOption(6, '6GB = Rp6.500')">6GB</div>
-        <div class="gb-option" onclick="selectGbOption(7, '7GB = Rp7.500')">7GB</div>
-        <div class="gb-option" onclick="selectGbOption(8, '8GB = Rp8.500')">8GB</div>
-        <div class="gb-option" onclick="selectGbOption(9, '9GB = Rp9.500')">9GB</div>
-        <div class="gb-option" onclick="selectGbOption(10, '10GB = Rp10.000')">10GB</div>
-        <div class="gb-option" onclick="selectGbOption('unlimited', 'Unlimited = Rp11.000')">Unlimited</div>
-      </div>
-    </div>
-    <input type="number" id="jumlahPanel" placeholder="Jumlah Panel">
-    <input type="text" id="ukuranPanel" placeholder="Ukuran (GB)" readonly>
-    <input type="text" id="waUser" placeholder="Nomor WhatsApp Anda">
-    <button onclick="beliPanel()">Beli</button>
-  </div>
-</div>
-
-<script>
-// Your existing JavaScript remains exactly the same
-let isTokenVerified = false;
-
-function masukWebsite() {
-  document.getElementById("intro").style.display = "none";
-}
-
-function toggleSection(id) {
-  document.querySelectorAll("section").forEach(sec => {
-    sec.classList.remove("active", "visible");
-    if (sec.id === id) {
-      sec.classList.add("active");
-      setTimeout(() => sec.classList.add("visible"), 10);
+  <script>
+    function copyCode(id) {
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Copied!");
+      });
     }
-  });
-}
+  </script>
 
-const audio = document.getElementById("backgroundMusic");
-const musicBtn = document.getElementById("musicControl");
-
-let audioCtx, analyser, source, bufferLength, dataArray;
-
-function toggleMusic() {
-  if (!audioCtx) initAudio();
-  if (audio.paused) {
-    audio.play();
-    musicBtn.textContent = "⏸️";
-    drawHeartbeat();
-  } else {
-    audio.pause();
-    musicBtn.textContent = "▶️";
-  }
-}
-
-function initAudio() {
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  analyser = audioCtx.createAnalyser();
-  source = audioCtx.createMediaElementSource(audio);
-  source.connect(analyser);
-  analyser.connect(audioCtx.destination);
-  analyser.fftSize = 2048;
-  bufferLength = analyser.fftSize;
-  dataArray = new Float32Array(bufferLength);
-}
-
-function drawHeartbeat() {
-  const canvas = document.getElementById("heartbeatVisualizer");
-  const ctx = canvas.getContext("2d");
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = 200;
-  }
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    if (!analyser) return;
-
-    analyser.getFloatTimeDomainData(dataArray);
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "#7a77b8";
-    ctx.beginPath();
-
-    const sliceWidth = canvas.width / bufferLength;
-    let x = 0;
-    for (let i = 0; i < bufferLength; i++) {
-      const y = (dataArray[i] * 0.5 + 0.5) * canvas.height;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      x += sliceWidth;
-    }
-    ctx.stroke();
-  }
-
-  animate();
-}
-
-function beliPanel() {
-  if (!isTokenVerified) {
-    showTokenPopup();
-    return;
-  }
-  
-  const jumlah = document.getElementById('jumlahPanel').value;
-  const ukuran = document.getElementById('ukuranPanel').value;
-  const wa = document.getElementById('waUser').value;
-  if (!jumlah || !ukuran || !wa) return alert('Harap isi semua data!');
-  const url = `https://wa.me/6285123581626?text=> ✨Halo,%20saya%20ingin%20beli%20panel.%0A> ✍️Jumlah:%20${jumlah}%0A> 🤏Ukuran:%20${ukuran}%0A> No.%20> 🧢Saya:%20${wa}`;
-  window.open(url, '_blank');
-}
-
-function selectGbOption(gb, priceText) {
-  document.querySelectorAll('.gb-option').forEach(option => {
-    option.classList.remove('active');
-  });
-  
-  event.target.classList.add('active');
-  document.getElementById('ukuranPanel').value = gb === 'unlimited' ? 'Unlimited' : `${gb}GB`;
-  console.log(`Selected: ${priceText}`);
-}
-
-function showTokenPopup() {
-  document.getElementById('tokenPopup').style.display = 'flex';
-  document.getElementById('tokenInput').focus();
-}
-
-function hideTokenPopup() {
-  document.getElementById('tokenPopup').style.display = 'none';
-  document.getElementById('tokenError').style.display = 'none';
-  document.getElementById('tokenInput').value = '';
-}
-
-function verifyToken() {
-  const tokenInput = document.getElementById('tokenInput').value;
-  const tokenError = document.getElementById('tokenError');
-  
-  if (tokenInput.toUpperCase() === 'NFDYA') {
-    isTokenVerified = true;
-    hideTokenPopup();
-    document.getElementById('buyPanelPopup').style.display = 'flex';
-  } else {
-    tokenError.style.display = 'block';
-    document.getElementById('tokenInput').value = '';
-    document.getElementById('tokenInput').focus();
-  }
-}
-
-fetch('https://api.countapi.xyz/hit/wilkazxq-portfolio/home')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visitorCount').innerText = `Total Kunjungan: ${data.value}`;
-  });
-</script>
 </body>
 </html>
