@@ -1,107 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WHLLNFDY API Docs</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      display: flex;
-      height: 100vh;
-    }
-
-    aside {
-      width: 250px;
-      background-color: #161b22;
-      padding: 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem;
-      overflow-y: auto;
-    }
-
-    h1, h2, h3 {
-      color: #58a6ff;
-    }
-
-    nav a {
-      color: #c9d1d9;
-      text-decoration: none;
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.3rem;
-      border-radius: 5px;
-    }
-
-    nav a:hover {
-      background-color: #21262d;
-    }
-
-    pre {
-      background-color: #161b22;
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      position: relative;
-    }
-
-    .copy-btn {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: #238636;
-      color: white;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.8rem;
-    }
-
-    .copy-btn:hover {
-      background: #2ea043;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WilkaNfdya | Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
 
-  <aside>
-    <h2>📘 API Docs</h2>
-    <nav>
-      <a href="#overview">Overview</a>
-      <a href="#auth">Auth</a>
-      <a href="#users">Users</a>
-    </nav>
-  </aside>
+  <!-- Navbar -->
+  <div class="flex justify-between items-center p-4 bg-gray-800 shadow">
+    <button class="text-2xl">&#9776;</button>
+    <h1 class="text-xl font-semibold">Home</h1>
+    <div>
+      🌞 <input type="checkbox" id="darkToggle" checked class="mx-1"> 🌜
+    </div>
+  </div>
 
-  <main>
-    <h1 id="overview">Overview</h1>
-    <p>Selamat datang di WHLLNFDY API. Di sini kamu bisa melihat dokumentasi lengkap.</p>
+  <!-- Profile -->
+  <section class="flex flex-col items-center text-center mt-6 px-4">
+    <img src="https://i.ibb.co/SVc8qkX/avatar.png" alt="Avatar" class="w-24 h-24 rounded-full border-4 border-white mb-4">
+    <h2 class="text-2xl font-bold text-teal-400">WilkaNfdya</h2>
+    <p class="mt-2 text-gray-300">"Hidup adalah serangkaian percobaan. Kegagalan hanyalah pelajaran berharga menuju kesuksesan."</p>
 
-    <h2 id="auth">🔐 Authentication</h2>
-    <p>Gunakan token Authorization:</p>
-    <pre><code id="code1">curl -H "Authorization: Bearer your_token" https://api.whllnfdy.vercel.app/data</code><button class="copy-btn" onclick="copyCode('code1')">Copy</button></pre>
+    <!-- Icons -->
+    <div class="flex gap-6 text-2xl mt-4">
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg" class="w-6 h-6 invert"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/whatsapp.svg" class="w-6 h-6 invert"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/youtube.svg" class="w-6 h-6 invert"></a>
+    </div>
+  </section>
 
-    <h2 id="users">👤 Get User</h2>
-    <p>Contoh endpoint untuk mengambil data pengguna:</p>
-    <pre><code id="code2">GET https://api.whllnfdy.vercel.app/v1/users</code><button class="copy-btn" onclick="copyCode('code2')">Copy</button></pre>
-  </main>
+  <!-- Kalender -->
+  <section class="mt-10 text-center">
+    <h3 class="text-xl font-semibold mb-2">Kalender</h3>
+    <div id="calendar" class="bg-gray-800 p-4 rounded-lg inline-block"></div>
+  </section>
+
+  <!-- Status Server -->
+  <section class="mt-10 px-6">
+    <h3 class="text-xl font-semibold mb-4">🖥️ Status Server</h3>
+    <div class="bg-gray-800 p-4 rounded-lg space-y-2 text-sm">
+      <p><strong>Total Permintaan:</strong> 936</p>
+      <p><strong>Total Pengunjung:</strong> 1</p>
+      <p><strong>Uptime:</strong> <span id="uptime">08d 10h 43m 06s</span></p>
+      <p><strong>Platform:</strong> Linux</p>
+      <p><strong>CPU:</strong> Intel Xeon Processor</p>
+    </div>
+  </section>
 
   <script>
-    function copyCode(id) {
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        alert("Copied!");
-      });
-    }
-  </script>
+    // DARK MODE SWITCH
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('bg-white');
+      document.body.classList.toggle('text-black');
+    });
 
+    // RENDER KALENDER REAL TIME
+    const calendar = document.getElementById('calendar');
+    const today = dayjs();
+    const daysInMonth = today.daysInMonth();
+    let html = `<h4 class="text-lg mb-2">${today.format('MMMM YYYY')}</h4><div class="grid grid-cols-7 gap-1 text-sm">`;
+    const startDay = dayjs(today.format('YYYY-MM-01')).day();
+
+    // Hari kosong di awal bulan
+    for (let i = 0; i < startDay; i++) html += `<div></div>`;
+    for (let i = 1; i <= daysInMonth; i++) {
+      const isToday = i === today.date();
+      html += `<div class="p-1 ${isToday ? 'bg-teal-500 text-white font-bold rounded' : ''}">${i}</div>`;
+    }
+    html += '</div>';
+    calendar.innerHTML = html;
+  </script>
 </body>
 </html>
