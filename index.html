@@ -5,94 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WilkaNfdya</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffe259, #ffa751);
-      color: #333;
-      text-align: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
     .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 22px;
+      text-align: center;
     }
 
     .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #00bfff;
+      border: 3px solid #00eaff;
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin-top: 20px;
-      font-size: 2em;
+      font-size: 1.6em;
+      margin-bottom: 6px;
     }
 
-    p {
+    .quote {
       font-style: italic;
-      color: #555;
-    }
-
-    .social, .edu {
-      margin-top: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 18px;
     }
 
     .social a {
-      color: #0077ff;
-      margin: 0 10px;
+      display: inline-block;
+      margin: 5px 6px;
+      padding: 6px 12px;
+      background: #00bcd4;
+      color: #fff;
+      border-radius: 18px;
+      font-size: 0.85em;
       text-decoration: none;
-      font-weight: bold;
+      transition: background 0.3s;
     }
 
-    .calendar, .status, .music, .edu {
-      margin-top: 30px;
-      padding: 15px;
-      background: #fefefe;
-      border-radius: 8px;
-      border: 2px dashed #ff9900;
+    .social a:hover {
+      background: #0097a7;
+    }
+
+    .section {
+      background: rgba(255,255,255,0.06);
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .section h3 {
+      margin-bottom: 6px;
+      font-size: 0.95em;
+      color: #00eaff;
+    }
+
+    .section p, .section a {
+      font-size: 0.85em;
+      color: #e0e0e0;
+      margin: 3px 0;
+    }
+
+    .section a {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 5px 10px;
+      background: #4caf50;
+      color: white;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 0.8em;
+    }
+
+    .section a:hover {
+      background: #388e3c;
+    }
+
+    #clock {
+      color: #ffd166;
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 0.95em;
     }
 
     .music button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #00c897;
+      margin-top: 8px;
+      padding: 8px 16px;
+      background: #ff5e57;
       color: white;
       border: none;
       border-radius: 20px;
+      font-size: 0.85em;
       font-weight: bold;
       cursor: pointer;
     }
 
     .music button:hover {
-      background-color: #009f74;
-    }
-
-    #clock {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-top: 10px;
-      color: #e07c00;
-    }
-
-    .edu a {
-      display: inline-block;
-      margin-top: 10px;
-      background: #4caf50;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 20px;
-      text-decoration: none;
-    }
-
-    .edu a:hover {
-      background: #388e3c;
+      background: #e94e49;
     }
   </style>
 </head>
@@ -100,32 +133,32 @@
   <div class="container">
     <img src="whll.jpg" alt="Foto Wilka" class="profile-img" />
     <h1>WilkaNfdya</h1>
-    <p>"Berpikir besar, melangkah pasti."</p>
+    <div class="quote" id="quote">"Berpikir besar, melangkah pasti."</div>
 
     <div class="social">
       <a href="https://instagram.com/namakamu" target="_blank">Instagram</a>
       <a href="https://wa.me/6282293786539" target="_blank">WhatsApp</a>
     </div>
 
-    <div class="edu">
+    <div class="section">
       <h3>🎓 Pendidikan</h3>
       <p>SMKN 2 Tembilahan</p>
-      <p>Jurusan: Teknik Komputer dan Jaringan</p>
+      <p>Teknik Komputer dan Jaringan</p>
       <a href="https://g.co/kgs/gc9Pdi7" target="_blank">🌐 Kunjungi Sekolah</a>
     </div>
 
-    <div class="calendar">
-      <h3>📅 Kalender Hari Ini:</h3>
+    <div class="section">
+      <h3>📅 Kalender & Jam</h3>
       <p id="calendar"></p>
-      <div id="clock"></div>
+      <p id="clock">🕒 --:--:--</p>
     </div>
 
-    <div class="status">
+    <div class="section">
       <h3>📡 Status Server</h3>
       <p>🟢 Online</p>
     </div>
 
-    <div class="music">
+    <div class="section">
       <h3>🎵 Musik Dashboard</h3>
       <audio id="audio" src="music.mp3"></audio>
       <button onclick="toggleAudio()">Play / Pause</button>
@@ -133,7 +166,7 @@
   </div>
 
   <script>
-    // Kalender real-time
+    // Kalender
     const date = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('calendar').textContent = date.toLocaleDateString('id-ID', options);
@@ -147,14 +180,10 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Musik Play/Pause
+    // Musik
     const audio = document.getElementById('audio');
     function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+      audio.paused ? audio.play() : audio.pause();
     }
   </script>
 </body>
