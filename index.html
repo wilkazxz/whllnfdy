@@ -2,157 +2,225 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WilkaNfdya</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
-      background: linear-gradient(to bottom, #f2f2f7, #e5e5ea);
-      color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientMove 30s linear infinite;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
     }
 
-    header {
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 22px;
       text-align: center;
-      margin-bottom: 30px;
     }
 
     .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 28px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 3px solid #00eaff;
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin-top: 10px;
-      font-size: 26px;
+      font-size: 1.6em;
+      margin-bottom: 6px;
     }
 
-    p.quote {
+    .quote {
       font-style: italic;
-      color: #555;
-      margin-bottom: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 18px;
     }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 30px;
+    .social a {
+      display: inline-block;
+      margin: 5px 6px;
+      padding: 6px 12px;
+      background: #00bcd4;
+      color: #fff;
+      border-radius: 18px;
+      font-size: 0.85em;
+      text-decoration: none;
+      transition: background 0.3s;
     }
 
-    .social-icons a {
-      color: #007aff;
-      font-size: 1.6rem;
-      transition: transform 0.2s ease;
+    .social a:hover {
+      background: #0097a7;
     }
 
-    .social-icons a:hover {
-      transform: scale(1.2);
+    .section {
+      background: rgba(255,255,255,0.06);
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: left;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    .section h3 {
+      margin-bottom: 6px;
+      font-size: 0.95em;
+      color: #00eaff;
     }
 
-    .card h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #333;
+    .section p, .section a {
+      font-size: 0.85em;
+      color: #e0e0e0;
+      margin: 3px 0;
     }
 
-    .button {
-      background: #007aff;
+    .section a {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 5px 10px;
+      background: #4caf50;
       color: white;
-      padding: 10px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 0.8em;
+    }
+
+    .section a:hover {
+      background: #388e3c;
+    }
+
+    #clock {
+      color: #ffd166;
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 0.95em;
+    }
+
+    .music button {
+      margin-top: 8px;
+      padding: 8px 16px;
+      background: #ff5e57;
+      color: white;
       border: none;
-      border-radius: 14px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
 
-    .button:hover {
-      background: #005ecb;
+    .music button:hover {
+      background: #e94e49;
     }
 
-    footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #888;
-      text-align: center;
+    .social i {
+      margin-right: 6px;
+    }
+
+    .support {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.06);
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .support h3 {
+      font-size: 1em;
+      margin-bottom: 10px;
+      color: #ffc107;
+    }
+
+    .support img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00000055;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="whll.jpg" alt="Wilka" class="profile-img" />
+  <div class="container">
+    <img src="whll.jpg" alt="Foto Wilka" class="profile-img" />
     <h1>WilkaNfdya</h1>
-    <p class="quote">"Terus belajar, terus berkembang, terus melangkah."</p>
-  </header>
+    <div class="quote">"Berpikir besar, melangkah pasti."</div>
 
-  <div class="social-icons">
-    <a href="https://wa.me/6282293786539"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-    <a href="https://github.com/"><i class="fab fa-github"></i></a>
-    <a href="https://g.co/kgs/gc9Pdi7" title="SMKN 2 Tembilahan"><i class="fas fa-school"></i></a>
-  </div>
+    <div class="social">
+      <a href="https://instagram.com/wilkaxyz" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://wa.me/6282293786539" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+    </div>
 
-  <div class="card">
-    <h2>📅 Kalender</h2>
-    <p id="calendar"></p>
-  </div>
+    <div class="section">
+      <h3>🎓 Pendidikan</h3>
+      <p>SMKN 2 Tembilahan</p>
+      <p>Teknik Komputer dan Jaringan</p>
+      <a href="https://g.co/kgs/gc9Pdi7" target="_blank">🌐 Kunjungi Sekolah</a>
+    </div>
 
-  <div class="card">
-    <h2>🎓 Info Pendidikan</h2>
-    <p>Sedang menempuh pendidikan di <strong>SMKN 2 Tembilahan</strong>, jurusan Teknik Komputer dan Jaringan.</p>
-  </div>
+    <div class="section">
+      <h3>📅 Kalender & Jam</h3>
+      <p id="calendar"></p>
+      <p id="clock">🕒 --:--:--</p>
+    </div>
 
-  <div class="card">
-    <h2>📶 Status Server</h2>
-    <p>Online - Semua sistem berjalan normal ✅</p>
-  </div>
+    <div class="section">
+      <h3>📡 Status Server</h3>
+      <p>🟢 Online</p>
+    </div>
 
-  <div class="card">
-    <h2>🎵 Musik</h2>
-    <button class="button" onclick="document.getElementById('audio').play()">Play Musik</button>
-    <audio id="audio" src="musik.mp3"></audio>
-  </div>
+    <div class="section music">
+      <h3>🎵 Musik Dashboard</h3>
+      <audio id="audio" src="music.mp3"></audio>
+      <button onclick="toggleAudio()">Play / Pause</button>
+    </div>
 
-  <div class="card">
-    <h2>💸 Dukungan QRIS</h2>
-    <button class="button" onclick="toggleQRIS()">Tampilkan QRIS</button>
-    <div id="qris" style="display:none; margin-top:15px;">
-      <img src="qris.jpg" alt="QRIS" style="width:100%; border-radius: 12px;" />
+    <div class="support">
+      <h3>💖 Dukungan & Support</h3>
+      <img src="qris.jpg" alt="QRIS Dukungan" />
     </div>
   </div>
 
-  <footer>
-    &copy; 2025 WilkaNfdya. Dibuat dengan gaya Apple 😎
-  </footer>
-
   <script>
-    function toggleQRIS() {
-      const qris = document.getElementById('qris');
-      qris.style.display = qris.style.display === 'none' ? 'block' : 'none';
-    }
-
-    const tanggal = new Date();
+    // Kalender
+    const date = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('calendar').textContent = tanggal.toLocaleDateString('id-ID', options);
+    document.getElementById('calendar').textContent = date.toLocaleDateString('id-ID', options);
+
+    // Jam real-time
+    function updateClock() {
+      const now = new Date();
+      const jam = now.toLocaleTimeString('id-ID', { hour12: false });
+      document.getElementById('clock').textContent = "🕒 " + jam;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Musik
+    const audio = document.getElementById('audio');
+    function toggleAudio() {
+      audio.paused ? audio.play() : audio.pause();
+    }
   </script>
 </body>
 </html>
