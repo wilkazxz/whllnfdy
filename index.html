@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login dengan Face ID</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+      padding: 30px;
+    }
+    h1 { color: #333; }
+    video {
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login dengan Face ID</h1>
+  <p>Arahkan wajahmu ke kamera untuk masuk</p>
+  <video id="video" width="320" height="240" autoplay muted></video>
+  <div id="status">Menunggu wajah...</div>
+
+  <script>
+    const video = document.getElementById('video');
+    const statusEl = document.getElementById('status');
+
+    // Load face-api models
+    Promise.all([
+      faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models'),
+    ]).then(startVideo);
+
+    function startVideo() {
+      navigator.mediaDevices.getUserMedia({ video: {} })
+        .then(stream => { video.srcObject = stream })
+        .catch(err => console.error("Kamera tidak bisa diakses:", err));
+    }
+
+    video.addEventListener('play', () => {
+      const detectInterval = setInterval(async () => {
+        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+
+        if (detections.length > 0) {
+          statusEl.innerText = "Wajah terdeteksi ✅, masuk...";
+          clearInterval(detectInterval);
+          setTimeout(() => {
+            window.location.href = "main.html"; // redirect ke main.html
+          }, 1000);
+        } else {
+          statusEl.innerText = "Menunggu wajah...";
+        }
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
